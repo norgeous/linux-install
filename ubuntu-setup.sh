@@ -14,6 +14,8 @@ CHOICES=$(\
   "MPV" "Install MPV " OFF \
   "SYNCTHING" "Install Syncthing " OFF \
   "KEEPASSXC" "Install KeepassXC " OFF \
+  "STEAM" "Install Steam " OFF \
+  "LUTRIS" "Install Lutris " OFF \
 3>&1 1>&2 2>&3)
 
 for i in $CHOICES; do
@@ -70,6 +72,17 @@ for i in $CHOICES; do
   if [[ $i == "\"SYNCTHING\"" ]]; then
     chmod +x ./scripts/syncthing.sh
     ./scripts/syncthing.sh
+  fi
+
+  if [[ $i == "\"STEAM\"" ]]; then
+    sudo apt install -y steam
+  fi
+
+  if [[ $i == "\"LUTRIS\"" ]]; then
+    # see https://github.com/lutris/lutris/releases
+    wget https://github.com/lutris/lutris/releases/download/v0.5.18/lutris_0.5.18_all.deb -O /tmp/lutris.deb
+    chmod +x /tmp/lutris.deb
+    sudo dpkg -i /tmp/lutris.deb
   fi
 
   sleep 1
