@@ -3,5 +3,7 @@
 installs applications and customisations to linux installs
 
 ```sh
-curl -s https://raw.githubusercontent.com/norgeous/linux-install/refs/heads/main/ubuntu-setup.sh | sh
+sudo apt-get install git
+git clone https://github.com/norgeous/linux-install/
+./linux-install/ubuntu-setup.sh
 ```
