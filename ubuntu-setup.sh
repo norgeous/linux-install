@@ -11,7 +11,7 @@ CHOICES=$(\
   "VSCODE" "Install VSCode " OFF \
   "GITHUB-DESKTOP" "Install Github Desktop " OFF \
   "GPT4ALL" "Install gpt4all " OFF \
-  "VLC" "Install VLC " OFF \
+  "MPV" "Install MPV " OFF \
   "SYNCTHING" "Install Syncthing " OFF \
   "KEEPASSXC" "Install KeepassXC " OFF \
 3>&1 1>&2 2>&3)
@@ -45,10 +45,11 @@ for i in $CHOICES; do
   fi
 
   if [[ "$i" == '"GITHUB-DESKTOP"' ]]; then
-    wget https://github.com/shiftkey/desktop/releases/download/release-3.2.1-linux1/GitHubDesktop-linux-3.2.1-linux1.deb -O /tmp/shiftkey-github-desktop.deb
-    chmod +x /tmp/shiftkey-github-desktop.deb
-    sudo apt install /tmp/shiftkey-github-desktop.deb
-    rm /tmp/shiftkey-github-desktop.deb
+    # from https://github.com/shiftkey/desktop
+    wget -qO - https://apt.packages.shiftkey.dev/gpg.key | gpg --dearmor | sudo tee /usr/share/keyrings/shiftkey-packages.gpg > /dev/null
+    sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/shiftkey-packages.gpg] https://apt.packages.shiftkey.dev/ubuntu/ any main" > /etc/apt/sources.list.d/shiftkey-packages.list'
+    sudo apt update
+    sudo apt install github-desktop
   fi
 
   if [[ "$i" == '"GPT4ALL"' ]]; then
@@ -58,8 +59,8 @@ for i in $CHOICES; do
     rm /tmp/gpt4all-installer-linux.run
   fi
 
-  if [[ $i == "\"VLC\"" ]]; then
-    sudo apt install -y vlc
+  if [[ $i == "\"MPV\"" ]]; then
+    sudo apt install -y mpv
   fi
 
   if [[ "$i" == '"KEEPASSXC"' ]]; then
