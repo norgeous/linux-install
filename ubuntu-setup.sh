@@ -46,6 +46,7 @@ for i in $CHOICES; do
     snap install code --classic
   fi
 
+  # TODO: this is breaking apt upgrade
   if [[ "$i" == '"GITHUB-DESKTOP"' ]]; then
     # from https://github.com/shiftkey/desktop
     wget -qO - https://apt.packages.shiftkey.dev/gpg.key | gpg --dearmor | sudo tee /usr/share/keyrings/shiftkey-packages.gpg > /dev/null
