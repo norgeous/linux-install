@@ -85,6 +85,18 @@ for i in $CHOICES; do
     sudo dpkg -i /tmp/lutris.deb
   fi
 
+  # Customise the sidebar in Files (Nautillus)
+  # ~/.config/user-dirs.dirs
+  # sed -i
+    # XDG_DOCUMENTS_DIR="$HOME/Documents"
+    # XDG_MUSIC_DIR="$HOME/Music"
+    # XDG_PICTURES_DIR="$HOME/Pictures"
+    # XDG_VIDEOS_DIR="$HOME/Videos"
+
+  # rm -r ~/Documents
+  # rm -r ~/Music
+  # rm -r ~/Videos
+
   sleep 1
 
   echo
