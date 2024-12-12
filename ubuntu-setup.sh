@@ -47,11 +47,12 @@ for i in $CHOICES; do
 
   if [[ "$i" == '"GITHUB-DESKTOP"' ]]; then
     # from https://github.com/shiftkey/desktop
-    # TODO: this is breaking apt upgrade
+    # TODO: this is breaking apt upgrade at the moment
     wget -qO - https://apt.packages.shiftkey.dev/gpg.key | gpg --dearmor | sudo tee /usr/share/keyrings/shiftkey-packages.gpg > /dev/null
     sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/shiftkey-packages.gpg] https://apt.packages.shiftkey.dev/ubuntu/ any main" > /etc/apt/sources.list.d/shiftkey-packages.list'
     sudo apt update
     sudo apt install github-desktop
+    # https://github.com/shiftkey/desktop/releases/download/release-3.4.8-linux1/GitHubDesktop-linux-amd64-3.4.8-linux1.deb
   fi
 
   if [[ "$i" == '"GPT4ALL"' ]]; then
