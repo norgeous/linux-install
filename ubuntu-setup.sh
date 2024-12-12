@@ -14,8 +14,7 @@ CHOICES=$(\
   "MPV" "Install MPV " OFF \
   "SYNCTHING" "Install Syncthing " OFF \
   "KEEPASSXC" "Install KeepassXC " OFF \
-  "STEAM" "Install Steam " OFF \
-  "LUTRIS" "Install Lutris " OFF \
+  "LUTRIS" "Install Lutris (Steam, Epic, etc) " OFF \
 3>&1 1>&2 2>&3)
 
 for i in $CHOICES; do
@@ -46,9 +45,9 @@ for i in $CHOICES; do
     snap install code --classic
   fi
 
-  # TODO: this is breaking apt upgrade
   if [[ "$i" == '"GITHUB-DESKTOP"' ]]; then
     # from https://github.com/shiftkey/desktop
+    # TODO: this is breaking apt upgrade
     wget -qO - https://apt.packages.shiftkey.dev/gpg.key | gpg --dearmor | sudo tee /usr/share/keyrings/shiftkey-packages.gpg > /dev/null
     sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/shiftkey-packages.gpg] https://apt.packages.shiftkey.dev/ubuntu/ any main" > /etc/apt/sources.list.d/shiftkey-packages.list'
     sudo apt update
@@ -73,10 +72,6 @@ for i in $CHOICES; do
   if [[ $i == "\"SYNCTHING\"" ]]; then
     chmod +x ./scripts/syncthing.sh
     ./scripts/syncthing.sh
-  fi
-
-  if [[ $i == "\"STEAM\"" ]]; then
-    sudo apt install -y steam
   fi
 
   if [[ $i == "\"LUTRIS\"" ]]; then
