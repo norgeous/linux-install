@@ -88,6 +88,7 @@ for i in $CHOICES; do
 
   # Customise the sidebar in Files (Nautillus)
   # ~/.config/user-dirs.dirs
+
   # sed -i
     # XDG_DOCUMENTS_DIR="$HOME/Documents"
     # XDG_MUSIC_DIR="$HOME/Music"
