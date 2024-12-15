@@ -1,5 +1,19 @@
 #!/bin/bash
 
+function title {
+  P='\033[1;35m' # purple
+  C='\033[1;36m' # cyan
+  N='\033[0m' # color off
+  length=${#1}
+  width=$((length + 4))
+  echo -en "${C}"
+  printf %${width}s | tr " " "#"
+  echo
+  echo -e "# ${P}$1${C} #"
+  printf %${width}s | tr " " "#"
+  echo -e "${N}\n"
+}
+
 function log {
   C='\033[1;36m' # cyan
   N='\033[0m' # color off
@@ -12,6 +26,8 @@ function commentOut {
   FILE="$2"
   sudo sed -i "s/^$FIND/$REPLACE/g" "$FILE"
 }
+
+title "norgeous' Ubuntu setup"
 
 CHOICES=$(\
   whiptail --title "norgeous' Ubuntu setup" --checklist \
@@ -37,8 +53,6 @@ CHOICES=$(\
   "RMPICTURES" "Nautillus (Files) sidebar > Remove Pictures          " OFF \
   "RMVIDEOS"   "Nautillus (Files) sidebar > Remove Videos            " OFF \
 3>&1 1>&2 2>&3)
-
-log "Starting norgeous' Ubuntu setup..."
 
 for i in $CHOICES; do
   log "Working on $i..."
