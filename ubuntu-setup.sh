@@ -3,6 +3,10 @@
 C='\033[1;36m' # cyan
 N='\033[0m' # color off
 
+function log {
+  echo -e "🧌  ${C}$1${N}"
+}
+
 function commentOut {
   FIND="$1"
   REPLACE="# $1"
@@ -36,7 +40,7 @@ CHOICES=$(\
 3>&1 1>&2 2>&3)
 
 for i in $CHOICES; do
-  echo -e "🧌  ${C}Working on $i...${N}"
+  log "Working on $i..."
 
   if [[ $i == "\"UPDATE\"" ]]; then
     sudo apt update
@@ -83,12 +87,11 @@ for i in $CHOICES; do
 
   if [[ "$i" == '"GHDESKTOP"' ]]; then
     # from https://github.com/shiftkey/desktop
-    # TODO: this is breaking apt upgrade at the moment
+    # TODO: this is breaking apt upgrade at the moment due to SSL expired / wrong on shiftkey.dev
     wget -qO - https://apt.packages.shiftkey.dev/gpg.key | gpg --dearmor | sudo tee /usr/share/keyrings/shiftkey-packages.gpg > /dev/null
     sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/shiftkey-packages.gpg] https://apt.packages.shiftkey.dev/ubuntu/ any main" > /etc/apt/sources.list.d/shiftkey-packages.list'
     sudo apt update
     sudo apt install github-desktop
-    # https://github.com/shiftkey/desktop/releases/download/release-3.4.8-linux1/GitHubDesktop-linux-amd64-3.4.8-linux1.deb
   fi
 
   if [[ "$i" == '"KEEPASSXC"' ]]; then
@@ -151,7 +154,7 @@ for i in $CHOICES; do
   sleep 1
 done
 
-echo -e "🧌  ${C}Done.${N}"
+log "Done."
 echo
 echo "Press any key to exit..."
 echo
