@@ -17,10 +17,10 @@ CHOICES=$(\
   "GPT4ALL"    "Install gpt4all                                      " OFF \
   "PINOKIO"    "Install pinokio.computer                             " OFF \
 3>&1 1>&2 2>&3)
-  # "RMDOCS"     "Nautillus (Files) sidebar > Remove Documents " OFF \
-  # "RMMUSIC"    "Nautillus (Files) sidebar > Remove Music " OFF \
-  # "RMPICTURES" "Nautillus (Files) sidebar > Remove Pictures " OFF \
-  # "RMVIDEOS"   "Nautillus (Files) sidebar > Remove Videos " OFF \
+  # "RMDOCS"     "Nautillus (Files) sidebar > Remove Documents         " OFF \
+  # "RMMUSIC"    "Nautillus (Files) sidebar > Remove Music             " OFF \
+  # "RMPICTURES" "Nautillus (Files) sidebar > Remove Pictures          " OFF \
+  # "RMVIDEOS"   "Nautillus (Files) sidebar > Remove Videos            " OFF \
 
 for i in $CHOICES; do
   echo "🧌  Working on $i..."
@@ -35,7 +35,7 @@ for i in $CHOICES; do
 
   if [[ $i == "\"UNBLOAT\"" ]]; then
     sudo apt remove deja-dup rhythmbox cheese totem
-    snap remove thunderbird
+    sudo snap remove thunderbird
   fi
 
   if [[ $i == "\"AUTOREMOVE\"" ]]; then
@@ -101,18 +101,22 @@ for i in $CHOICES; do
     # TODO: .desktop link file icon is broken, because its randomly sized and in the 0x0 directory
   fi
 
+  if [[ "$i" == '"RMDOCS"' ]]; then
+    # Customise the sidebar in Files (Nautillus)
+    # ~/.config/user-dirs.dirs
+    # /etc/xdg/user-dirs.defaults (must be edited for changes to persist after reboot)
 
-  # Customise the sidebar in Files (Nautillus)
-  # ~/.config/user-dirs.dirs
-  # /etc/xdg/user-dirs.defaults (must be edited for changes to persist after reboot)
-
-  # sed -i
-    # XDG_DOCUMENTS_DIR="$HOME/Documents"
-    # XDG_MUSIC_DIR="$HOME/Music"
-    # XDG_PICTURES_DIR="$HOME/Pictures"
-    # XDG_VIDEOS_DIR="$HOME/Videos"
+    # sed -i
+      # XDG_DOCUMENTS_DIR="$HOME/Documents"
+      # XDG_MUSIC_DIR="$HOME/Music"
+      # XDG_PICTURES_DIR="$HOME/Pictures"
+      # XDG_VIDEOS_DIR="$HOME/Videos"
+    echo "WIP"
+  fi
 
   sleep 1
 
   echo
 done
+
+sleep 5
