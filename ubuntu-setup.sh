@@ -1,10 +1,9 @@
 #!/bin/bash
 
-C='\033[1;36m' # cyan
-N='\033[0m' # color off
-
 function log {
-  echo -e "🧌  ${C}$1${N}"
+  C='\033[1;36m' # cyan
+  N='\033[0m' # color off
+  echo -e "🧌  ${C}$1${N}\n"
 }
 
 function commentOut {
@@ -38,6 +37,8 @@ CHOICES=$(\
   "RMPICTURES" "Nautillus (Files) sidebar > Remove Pictures          " OFF \
   "RMVIDEOS"   "Nautillus (Files) sidebar > Remove Videos            " OFF \
 3>&1 1>&2 2>&3)
+
+log "Starting norgeous' Ubuntu setup..."
 
 for i in $CHOICES; do
   log "Working on $i..."
@@ -155,7 +156,6 @@ for i in $CHOICES; do
 done
 
 log "Done."
-echo
 echo "Press any key to exit..."
 echo
 read -rsn1 -p ""
