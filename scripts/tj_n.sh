@@ -1,5 +1,4 @@
 #!/bin/bash
-# [[ $EUID -ne 0 ]] && echo "You must be running as user root." && exit 1
 
 sudo apt install -y git build-essential
 
