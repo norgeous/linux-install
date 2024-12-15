@@ -2,20 +2,25 @@
 
 CHOICES=$(\
   whiptail --title "norgeous' Ubuntu setup" --checklist \
-  "Use Up / Down and Space to select.\nEnter to start.\nEsc to cancel." 18 56 8 \
-  "UPDATE" "Update system software " OFF \
-  "UPGRADE" "Upgrade system software " OFF \
-  "UNBLOAT" "remove Ubuntu bloat " OFF \
-  "AUTOREMOVE" "autoremove packages " OFF \
-  "NODE" "Install tj/n " OFF \
-  "VSCODE" "Install VSCode " OFF \
-  "GITHUB-DESKTOP" "Install Github Desktop " OFF \
-  "GPT4ALL" "Install gpt4all " OFF \
-  "MPV" "Install MPV " OFF \
-  "SYNCTHING" "Install Syncthing " OFF \
-  "KEEPASSXC" "Install KeepassXC " OFF \
-  "LUTRIS" "Install Lutris (Steam, Epic, etc) " OFF \
+  "Use Up / Down and Space to select.\nEnter to start.\nEsc to cancel." 21 77 12 \
+  "UPDATE"     "Update system software                               " OFF \
+  "UPGRADE"    "Upgrade system software                              " OFF \
+  "UNBLOAT"    "Remove Ubuntu bloat                                  " OFF \
+  "AUTOREMOVE" "Autoremove packages                                  " OFF \
+  "MPV"        "Install MPV                                          " OFF \
+  "NODE"       "Install tj/n                                         " OFF \
+  "VSCODE"     "Install VSCode                                       " OFF \
+  "GHDESKTOP"  "Install Github Desktop                               " OFF \
+  "SYNCTHING"  "Install Syncthing                                    " OFF \
+  "KEEPASSXC"  "Install KeepassXC                                    " OFF \
+  "LUTRIS"     "Install Lutris (Steam, Epic, etc)                    " OFF \
+  "GPT4ALL"    "Install gpt4all                                      " OFF \
+  "PINOKIO"    "Install pinokio.computer                             " OFF \
 3>&1 1>&2 2>&3)
+  # "RMDOCS"     "Nautillus (Files) sidebar > Remove Documents " OFF \
+  # "RMMUSIC"    "Nautillus (Files) sidebar > Remove Music " OFF \
+  # "RMPICTURES" "Nautillus (Files) sidebar > Remove Pictures " OFF \
+  # "RMVIDEOS"   "Nautillus (Files) sidebar > Remove Videos " OFF \
 
 for i in $CHOICES; do
   echo "🧌  Working on $i..."
@@ -29,11 +34,17 @@ for i in $CHOICES; do
   fi
 
   if [[ $i == "\"UNBLOAT\"" ]]; then
-    sudo apt remove thunderbird deja-dup rhythmbox cheese totem
+    sudo apt remove deja-dup rhythmbox cheese totem
+    snap remove thunderbird
   fi
 
   if [[ $i == "\"AUTOREMOVE\"" ]]; then
     sudo apt autoremove
+  fi
+
+  if [[ $i == "\"MPV\"" ]]; then
+    sudo apt install -y mpv
+    # TODO: set mpv.conf and input.conf
   fi
 
   if [[ $i == "\"NODE\"" ]]; then
@@ -45,7 +56,7 @@ for i in $CHOICES; do
     snap install code --classic
   fi
 
-  if [[ "$i" == '"GITHUB-DESKTOP"' ]]; then
+  if [[ "$i" == '"GHDESKTOP"' ]]; then
     # from https://github.com/shiftkey/desktop
     # TODO: this is breaking apt upgrade at the moment
     wget -qO - https://apt.packages.shiftkey.dev/gpg.key | gpg --dearmor | sudo tee /usr/share/keyrings/shiftkey-packages.gpg > /dev/null
@@ -53,17 +64,6 @@ for i in $CHOICES; do
     sudo apt update
     sudo apt install github-desktop
     # https://github.com/shiftkey/desktop/releases/download/release-3.4.8-linux1/GitHubDesktop-linux-amd64-3.4.8-linux1.deb
-  fi
-
-  if [[ "$i" == '"GPT4ALL"' ]]; then
-    wget https://gpt4all.io/installers/gpt4all-installer-linux.run -O /tmp/gpt4all-installer-linux.run
-    chmod +x /tmp/gpt4all-installer-linux.run
-    /tmp/gpt4all-installer-linux.run
-    rm /tmp/gpt4all-installer-linux.run
-  fi
-
-  if [[ $i == "\"MPV\"" ]]; then
-    sudo apt install -y mpv
   fi
 
   if [[ "$i" == '"KEEPASSXC"' ]]; then
@@ -80,7 +80,27 @@ for i in $CHOICES; do
     wget https://github.com/lutris/lutris/releases/download/v0.5.18/lutris_0.5.18_all.deb -O /tmp/lutris.deb
     chmod +x /tmp/lutris.deb
     sudo dpkg -i /tmp/lutris.deb
+    rm /tmp/lutris.deb
   fi
+
+  # GPT4ALL
+  if [[ "$i" == '"GPT4ALL"' ]]; then
+    wget https://gpt4all.io/installers/gpt4all-installer-linux.run -O /tmp/gpt4all-installer-linux.run
+    chmod +x /tmp/gpt4all-installer-linux.run
+    /tmp/gpt4all-installer-linux.run
+    rm /tmp/gpt4all-installer-linux.run
+    # TODO: .desktop link appears to install to ~/Desktop, and doesnt appear in dock in Ubuntu 24.04
+  fi
+
+  if [[ "$i" == '"PINOKIO"' ]]; then
+    # see https://github.com/pinokiocomputer/pinokio/releases
+    wget https://github.com/pinokiocomputer/pinokio/releases/download/2.15.1/Pinokio_2.15.1_amd64.deb -O /tmp/pinokio.deb
+    chmod +x /tmp/pinokio.deb
+    sudo dpkg -i /tmp/pinokio.deb
+    rm /tmp/pinokio.deb
+    # TODO: .desktop link file icon is broken, because its randomly sized and in the 0x0 directory
+  fi
+
 
   # Customise the sidebar in Files (Nautillus)
   # ~/.config/user-dirs.dirs
@@ -91,10 +111,6 @@ for i in $CHOICES; do
     # XDG_MUSIC_DIR="$HOME/Music"
     # XDG_PICTURES_DIR="$HOME/Pictures"
     # XDG_VIDEOS_DIR="$HOME/Videos"
-
-  # rm -r ~/Documents
-  # rm -r ~/Music
-  # rm -r ~/Videos
 
   sleep 1
 
