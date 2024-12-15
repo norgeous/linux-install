@@ -1,5 +1,8 @@
 #!/bin/bash
 
+C='\033[1;36m' # cyan
+N='\033[0m' # color off
+
 function commentOut {
   FIND="$1"
   REPLACE="# $1"
@@ -15,6 +18,8 @@ CHOICES=$(\
   "UNBLOAT"    "Remove Ubuntu bloat                                  " OFF \
   "AUTOREMOVE" "Autoremove packages                                  " OFF \
   "MPV"        "Install MPV                                          " OFF \
+  "GIMP"       "Install GIMP                                         " OFF \
+  "INKSCAPE"   "Install InkScape                                     " OFF \
   "BLENDER"    "Install Blender                                      " OFF \
   "NODE"       "Install tj/n                                         " OFF \
   "VSCODE"     "Install VSCode                                       " OFF \
@@ -31,7 +36,7 @@ CHOICES=$(\
 3>&1 1>&2 2>&3)
 
 for i in $CHOICES; do
-  echo "🧌  Working on $i..."
+  echo -e "🧌  ${C}Working on $i...${N}"
 
   if [[ $i == "\"UPDATE\"" ]]; then
     sudo apt update
@@ -55,8 +60,16 @@ for i in $CHOICES; do
     # TODO: set mpv.conf and input.conf
   fi
 
+  if [[ $i == "\"GIMP\"" ]]; then
+    sudo snap install gimp
+  fi
+
+  if [[ $i == "\"INKSCAPE\"" ]]; then
+    sudo snap install inkscape
+  fi
+
   if [[ $i == "\"BLENDER\"" ]]; then
-    snap install blender
+    sudo snap install blender
   fi
 
   if [[ $i == "\"NODE\"" ]]; then
@@ -65,7 +78,7 @@ for i in $CHOICES; do
   fi
 
   if [[ "$i" == '"VSCODE"' ]]; then
-    snap install code --classic
+    sudo snap install code --classic
   fi
 
   if [[ "$i" == '"GHDESKTOP"' ]]; then
@@ -138,4 +151,8 @@ for i in $CHOICES; do
   sleep 1
 done
 
-sleep 5
+echo -e "🧌  ${C}Done.${N}"
+echo
+echo "Press any key to exit..."
+echo
+read -rsn1 -p ""
