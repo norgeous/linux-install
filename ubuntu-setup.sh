@@ -84,6 +84,7 @@ for i in $CHOICES; do
 
   # Customise the sidebar in Files (Nautillus)
   # ~/.config/user-dirs.dirs
+  # /etc/xdg/user-dirs.defaults (must be edited for changes to persist after reboot)
 
   # sed -i
     # XDG_DOCUMENTS_DIR="$HOME/Documents"
