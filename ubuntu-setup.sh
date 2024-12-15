@@ -1,5 +1,12 @@
 #!/bin/bash
 
+function commentOut {
+  FIND="$1"
+  REPLACE="# $1"
+  FILE="$2"
+  sudo sed -i "s/^$FIND/$REPLACE/g" "$FILE"
+}
+
 CHOICES=$(\
   whiptail --title "norgeous' Ubuntu setup" --checklist \
   "Use Up / Down and Space to select.\nEnter to start.\nEsc to cancel." 21 77 12 \
@@ -16,11 +23,11 @@ CHOICES=$(\
   "LUTRIS"     "Install Lutris (Steam, Epic, etc)                    " OFF \
   "GPT4ALL"    "Install gpt4all                                      " OFF \
   "PINOKIO"    "Install pinokio.computer                             " OFF \
+  "RMDOCS"     "Nautillus (Files) sidebar > Remove Documents         " OFF \
+  "RMMUSIC"    "Nautillus (Files) sidebar > Remove Music             " OFF \
+  "RMPICTURES" "Nautillus (Files) sidebar > Remove Pictures          " OFF \
+  "RMVIDEOS"   "Nautillus (Files) sidebar > Remove Videos            " OFF \
 3>&1 1>&2 2>&3)
-  # "RMDOCS"     "Nautillus (Files) sidebar > Remove Documents         " OFF \
-  # "RMMUSIC"    "Nautillus (Files) sidebar > Remove Music             " OFF \
-  # "RMPICTURES" "Nautillus (Files) sidebar > Remove Pictures          " OFF \
-  # "RMVIDEOS"   "Nautillus (Files) sidebar > Remove Videos            " OFF \
 
 for i in $CHOICES; do
   echo "🧌  Working on $i..."
@@ -102,19 +109,28 @@ for i in $CHOICES; do
   fi
 
   if [[ "$i" == '"RMDOCS"' ]]; then
-    echo "WIP (does nothing right now)"
-    # Customise the sidebar in Files (Nautillus)
-    # ~/.config/user-dirs.dirs
-      # sed -i
-      # XDG_DOCUMENTS_DIR="$HOME/Documents"
-    # /etc/xdg/user-dirs.defaults (must be edited for changes to persist after reboot)
-      # sed -i
-      # DOCUMENTS=Documents
+    commentOut "XDG_DOCUMENTS_DIR=" "$HOME/.config/user-dirs.dirs"
+    commentOut "DOCUMENTS=" "/etc/xdg/user-dirs.defaults" # must be edited for changes to persist after reboot
   fi
 
-  sleep 1
+  if [[ "$i" == '"RMMUSIC"' ]]; then
+    commentOut "XDG_MUSIC_DIR=" "$HOME/.config/user-dirs.dirs"
+    commentOut "MUSIC=" "/etc/xdg/user-dirs.defaults" # must be edited for changes to persist after reboot
+  fi
+
+  if [[ "$i" == '"RMPICTURES"' ]]; then
+    commentOut "XDG_PICTURES_DIR=" "$HOME/.config/user-dirs.dirs"
+    commentOut "PICTURES=" "/etc/xdg/user-dirs.defaults" # must be edited for changes to persist after reboot
+  fi
+
+  if [[ "$i" == '"RMVIDEOS"' ]]; then
+    commentOut "XDG_VIDEOS_DIR=" "$HOME/.config/user-dirs.dirs"
+    commentOut "VIDEOS=" "/etc/xdg/user-dirs.defaults" # must be edited for changes to persist after reboot
+  fi
 
   echo
+
+  sleep 1
 done
 
 sleep 5
