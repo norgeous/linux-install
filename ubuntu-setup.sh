@@ -102,16 +102,14 @@ for i in $CHOICES; do
   fi
 
   if [[ "$i" == '"RMDOCS"' ]]; then
+    echo "WIP (does nothing right now)"
     # Customise the sidebar in Files (Nautillus)
     # ~/.config/user-dirs.dirs
-    # /etc/xdg/user-dirs.defaults (must be edited for changes to persist after reboot)
-
-    # sed -i
+      # sed -i
       # XDG_DOCUMENTS_DIR="$HOME/Documents"
-      # XDG_MUSIC_DIR="$HOME/Music"
-      # XDG_PICTURES_DIR="$HOME/Pictures"
-      # XDG_VIDEOS_DIR="$HOME/Videos"
-    echo "WIP"
+    # /etc/xdg/user-dirs.defaults (must be edited for changes to persist after reboot)
+      # sed -i
+      # DOCUMENTS=Documents
   fi
 
   sleep 1
