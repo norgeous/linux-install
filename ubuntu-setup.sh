@@ -15,6 +15,7 @@ CHOICES=$(\
   "UNBLOAT"    "Remove Ubuntu bloat                                  " OFF \
   "AUTOREMOVE" "Autoremove packages                                  " OFF \
   "MPV"        "Install MPV                                          " OFF \
+  "BLENDER"    "Install Blender                                      " OFF \
   "NODE"       "Install tj/n                                         " OFF \
   "VSCODE"     "Install VSCode                                       " OFF \
   "GHDESKTOP"  "Install Github Desktop                               " OFF \
@@ -52,6 +53,10 @@ for i in $CHOICES; do
   if [[ $i == "\"MPV\"" ]]; then
     sudo apt install -y mpv
     # TODO: set mpv.conf and input.conf
+  fi
+
+  if [[ $i == "\"BLENDER\"" ]]; then
+    snap install blender
   fi
 
   if [[ $i == "\"NODE\"" ]]; then
