@@ -12,7 +12,7 @@ sudo snap refresh # TODO: does this actually perform the upgrade also?
 ## UPGRADE: Upgrade system software
 
 ```sh
-sudo apt upgrade
+sudo apt upgrade -y
 
 # not sure if this is needed https://askubuntu.com/a/761719
 snap list | awk -F" " '{if ($1 && NR>1) { system("sudo snap refresh " $1) }}'
