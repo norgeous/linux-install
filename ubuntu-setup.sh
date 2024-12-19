@@ -57,45 +57,45 @@ CHOICES=$(\
 for i in $CHOICES; do
   log "Working on $i..."
 
-  if [[ $i == "\"UPDATE\"" ]]; then
+  if [[ "$i" == '"UPDATE"' ]]; then
     sudo apt update
     sudo snap refresh # TODO: does this actually perform the upgrade also?
   fi
 
-  if [[ $i == "\"UPGRADE\"" ]]; then
+  if [[ "$i" == '"UPGRADE"' ]]; then
     sudo apt upgrade
     
     # not sure if this is needed https://askubuntu.com/a/761719
     snap list | awk -F" " '{if ($1 && NR>1) { system("sudo snap refresh " $1) }}'
   fi
 
-  if [[ $i == "\"AUTOREMOVE\"" ]]; then
+  if [[ "$i" == '"AUTOREMOVE"' ]]; then
     sudo apt autoremove
   fi
 
-  if [[ $i == "\"UNBLOAT\"" ]]; then
+  if [[ "$i" == '"UNBLOAT"' ]]; then
     sudo apt remove deja-dup rhythmbox cheese totem
     sudo snap remove thunderbird cups
   fi
 
-  if [[ $i == "\"MPV\"" ]]; then
+  if [[ "$i" == '"MPV"' ]]; then
     sudo apt install -y mpv
     # TODO: set mpv.conf and input.conf
   fi
 
-  if [[ $i == "\"GIMP\"" ]]; then
+  if [[ "$i" == '"GIMP"' ]]; then
     sudo snap install gimp
   fi
 
-  if [[ $i == "\"INKSCAPE\"" ]]; then
+  if [[ "$i" == '"INKSCAPE"' ]]; then
     sudo snap install inkscape
   fi
 
-  if [[ $i == "\"BLENDER\"" ]]; then
+  if [[ "$i" == '"BLENDER"' ]]; then
     sudo snap install blender
   fi
 
-  if [[ $i == "\"NODE\"" ]]; then
+  if [[ "$i" == '"NODE"' ]]; then
     chmod +x ./scripts/tj_n.sh
     ./scripts/tj_n.sh
   fi
@@ -117,12 +117,12 @@ for i in $CHOICES; do
     sudo apt install -y keepassxc
   fi
 
-  if [[ $i == "\"SYNCTHING\"" ]]; then
+  if [[ "$i" == '"SYNCTHING"' ]]; then
     chmod +x ./scripts/syncthing.sh
     ./scripts/syncthing.sh
   fi
 
-  if [[ $i == "\"LUTRIS\"" ]]; then
+  if [[ "$i" == '"LUTRIS"' ]]; then
     # see https://github.com/lutris/lutris/releases
     wget https://github.com/lutris/lutris/releases/download/v0.5.18/lutris_0.5.18_all.deb -O /tmp/lutris.deb
     chmod +x /tmp/lutris.deb
