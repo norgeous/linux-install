@@ -72,6 +72,8 @@ for i in $CHOICES; do
 
   if [[ $i == "\"SNAPUP\"" ]]; then
     sudo snap refresh
+    # the following might also be needed https://askubuntu.com/a/761719
+    # pseudo code: snap list -> sudo snap refresh [name]
   fi
 
   if [[ $i == "\"UNBLOAT\"" ]]; then
