@@ -73,7 +73,7 @@ for i in $CHOICES; do
   if [[ $i == "\"SNAPUP\"" ]]; then
     sudo snap refresh
     # the following might also be needed https://askubuntu.com/a/761719
-    # pseudo code: snap list -> sudo snap refresh [name]
+    # snap list | awk -F" " '{if ($1 && NR>1) { system("sudo snap refresh " $1) }}'
   fi
 
   if [[ $i == "\"UNBLOAT\"" ]]; then
