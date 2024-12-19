@@ -1,4 +1,4 @@
-# linux-install
+# ubuntu-setup
 
 Installs applications and customisations to linux (Ubuntu 24.04) installs
 
