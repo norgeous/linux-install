@@ -32,17 +32,16 @@ title "norgeous' Ubuntu setup"
 CHOICES=$(\
   whiptail --title "norgeous' Ubuntu setup" --checklist \
   "Use Up / Down and Space to select.\nEnter to start.\nEsc to cancel." 21 77 12 \
-  "UPDATE"     "Update system software                               " OFF \
+  "UPDATE"     "Update system software package lists                 " OFF \
   "UPGRADE"    "Upgrade system software                              " OFF \
   "AUTOREMOVE" "Autoremove packages                                  " OFF \
-  "SNAPUP"     "Refresh snaps                                        " OFF \
   "UNBLOAT"    "Remove Ubuntu bloat                                  " OFF \
   "MPV"        "Install MPV                                          " OFF \
-  "GIMP"       "Install GIMP                                         " OFF \
-  "INKSCAPE"   "Install InkScape                                     " OFF \
-  "BLENDER"    "Install Blender                                      " OFF \
+  "GIMP"       "Install GIMP (snap)                                  " OFF \
+  "INKSCAPE"   "Install InkScape (snap)                              " OFF \
+  "BLENDER"    "Install Blender (snap)                               " OFF \
   "NODE"       "Install tj/n                                         " OFF \
-  "VSCODE"     "Install VSCode                                       " OFF \
+  "VSCODE"     "Install VSCode (snap)                                " OFF \
   "GHDESKTOP"  "Install Github Desktop                               " OFF \
   "SYNCTHING"  "Install Syncthing                                    " OFF \
   "KEEPASSXC"  "Install KeepassXC                                    " OFF \
@@ -60,20 +59,18 @@ for i in $CHOICES; do
 
   if [[ $i == "\"UPDATE\"" ]]; then
     sudo apt update
+    sudo snap refresh # TODO: does this actually perform the upgrade also?
   fi
 
   if [[ $i == "\"UPGRADE\"" ]]; then
     sudo apt upgrade
+    
+    # not sure if this is needed https://askubuntu.com/a/761719
+    snap list | awk -F" " '{if ($1 && NR>1) { system("sudo snap refresh " $1) }}'
   fi
 
   if [[ $i == "\"AUTOREMOVE\"" ]]; then
     sudo apt autoremove
-  fi
-
-  if [[ $i == "\"SNAPUP\"" ]]; then
-    sudo snap refresh
-    # the following might also be needed https://askubuntu.com/a/761719
-    # snap list | awk -F" " '{if ($1 && NR>1) { system("sudo snap refresh " $1) }}'
   fi
 
   if [[ $i == "\"UNBLOAT\"" ]]; then
