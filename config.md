@@ -13,8 +13,6 @@ sudo apt update
 sudo snap refresh
 ```
 
----
-
 ## UPGRADE: Upgrade system software
 
 ```sh
@@ -24,15 +22,11 @@ sudo apt upgrade -y
 snap list | awk -F" " '{if ($1 && NR>1) { system("sudo snap refresh " $1) }}'
 ```
 
----
-
 ## AUTOREMOVE: Autoremove packages
 
 ```sh
 sudo apt autoremove
 ```
-
----
 
 ## UNBLOAT: Remove Ubuntu bloat
 
@@ -40,8 +34,6 @@ sudo apt autoremove
 sudo apt remove deja-dup rhythmbox cheese totem
 sudo snap remove thunderbird cups
 ```
-
----
 
 ## MPV: Install MPV
 
@@ -51,15 +43,11 @@ TODO: set mpv.conf and input.conf
 sudo apt install -y mpv
 ```
 
----
-
 ## GIMP: Install GIMP (snap)
 
 ```sh
 sudo snap install gimp
 ```
-
----
 
 ## INKSCAPE: Install InkScape (snap)
 
@@ -67,15 +55,11 @@ sudo snap install gimp
 sudo snap install inkscape
 ```
 
----
-
 ## BLENDER: Install Blender (snap)
 
 ```sh
 sudo snap install blender
 ```
-
----
 
 ## NODE: Install tj/n
 
@@ -84,15 +68,11 @@ chmod +x ./scripts/tj_n.sh
 ./scripts/tj_n.sh
 ```
 
----
-
 ## VSCODE: Install VSCode (snap)
 
 ```sh
 sudo snap install code --classic
 ```
-
----
 
 ## GHDESKTOP: Install Github Desktop
 
@@ -107,15 +87,11 @@ sudo apt update
 sudo apt install github-desktop
 ```
 
----
-
 ## KEEPASSXC: Install KeepassXC
 
 ```sh
 sudo apt install -y keepassxc
 ```
-
----
 
 ## SYNCTHING: Install Syncthing
 
@@ -123,8 +99,6 @@ sudo apt install -y keepassxc
 chmod +x ./scripts/syncthing.sh
 ./scripts/syncthing.sh
 ```
-
----
 
 ## LUTRIS: Install Lutris (Steam, Epic, etc)
 
@@ -137,8 +111,6 @@ chmod +x /tmp/lutris.deb
 sudo dpkg -i /tmp/lutris.deb
 rm /tmp/lutris.deb
 ```
-
----
 
 ## GPT4ALL: Install gpt4all
 
@@ -153,8 +125,6 @@ chmod +x /tmp/gpt4all-installer-linux.run
 /tmp/gpt4all-installer-linux.run
 rm /tmp/gpt4all-installer-linux.run
 ```
-
----
 
 ## PINOKIO: Install pinokio.computer
 
@@ -173,36 +143,30 @@ path2=/home/user/.local/share/icons/hicolor/256x256/apps/pinokio.png
 cp $path1 $path2
 ```
 
----
+## NAUTILLUS: Remove items from Nautillus (Files) sidebar
 
-## RMDOCS: Nautillus (Files) sidebar > Remove Documents
+### RMDOCS: Remove Documents
 
 ```sh
 commentOut "XDG_DOCUMENTS_DIR=" "$HOME/.config/user-dirs.dirs"
 commentOut "DOCUMENTS=" "/etc/xdg/user-dirs.defaults"
 ```
 
----
-
-## RMMUSIC: Nautillus (Files) sidebar > Remove Music
+### RMMUSIC: Nautillus (Files) sidebar > Remove Music
 
 ```sh
 commentOut "XDG_MUSIC_DIR=" "$HOME/.config/user-dirs.dirs"
 commentOut "MUSIC=" "/etc/xdg/user-dirs.defaults"
 ```
 
----
-
-## RMPICTURES: Nautillus (Files) sidebar > Remove Pictures
+### RMPICTURES: Nautillus (Files) sidebar > Remove Pictures
 
 ```sh
 commentOut "XDG_PICTURES_DIR=" "$HOME/.config/user-dirs.dirs"
 commentOut "PICTURES=" "/etc/xdg/user-dirs.defaults"
 ```
 
----
-
-## RMVIDEOS: Nautillus (Files) sidebar > Remove Videos
+### RMVIDEOS: Nautillus (Files) sidebar > Remove Videos
 
 ```sh
 commentOut "XDG_VIDEOS_DIR=" "$HOME/.config/user-dirs.dirs"
