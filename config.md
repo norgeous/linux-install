@@ -6,9 +6,11 @@ text here
 
 ## UPDATE: Update system software package lists
 
+TODO: does `snap refresh` actually perform the upgrade also?
+
 ```sh
 sudo apt update
-sudo snap refresh # TODO: does this actually perform the upgrade also?
+sudo snap refresh
 ```
 
 ---
