@@ -3,8 +3,9 @@
 text here
 
 ---
+## System Updates...
 
-## Update system software package lists
+### Update system software package lists
 
 TODO: does `snap refresh` actually perform the upgrade also?
 
@@ -13,7 +14,7 @@ sudo apt update
 sudo snap refresh
 ```
 
-## Upgrade system software
+### Upgrade system software
 
 ```sh
 sudo apt upgrade -y
@@ -22,20 +23,22 @@ sudo apt upgrade -y
 snap list | awk -F" " '{if ($1 && NR>1) { system("sudo snap refresh " $1) }}'
 ```
 
-## Autoremove packages
+### Autoremove packages
 
 ```sh
 sudo apt autoremove
 ```
 
-## Remove Ubuntu bloat
+### Remove Ubuntu bloat
 
 ```sh
 sudo apt remove deja-dup rhythmbox cheese totem
 sudo snap remove thunderbird cups
 ```
 
-## Install MPV
+## Install Software...
+
+### MPV
 
 TODO: set mpv.conf and input.conf
 
@@ -43,38 +46,38 @@ TODO: set mpv.conf and input.conf
 sudo apt install -y mpv
 ```
 
-## Install GIMP (snap)
+### GIMP (snap)
 
 ```sh
 sudo snap install gimp
 ```
 
-## Install InkScape (snap)
+### InkScape (snap)
 
 ```sh
 sudo snap install inkscape
 ```
 
-## Install Blender (snap)
+### Blender (snap)
 
 ```sh
 sudo snap install blender
 ```
 
-## Install tj/n
+### tj/n
 
 ```sh
 chmod +x ./scripts/tj_n.sh
 ./scripts/tj_n.sh
 ```
 
-## Install VSCode (snap)
+### VSCode (snap)
 
 ```sh
 sudo snap install code --classic
 ```
 
-## Install Github Desktop
+### Github Desktop
 
 from https://github.com/shiftkey/desktop
 
@@ -87,20 +90,20 @@ sudo apt update
 sudo apt install github-desktop
 ```
 
-## Install KeepassXC
+### KeepassXC
 
 ```sh
 sudo apt install -y keepassxc
 ```
 
-## Install Syncthing
+### Syncthing
 
 ```sh
 chmod +x ./scripts/syncthing.sh
 ./scripts/syncthing.sh
 ```
 
-## Install Lutris (Steam, Epic, etc)
+### Lutris (Steam, Epic, etc)
 
 see https://github.com/lutris/lutris/releases for updates
 
@@ -112,7 +115,7 @@ sudo dpkg -i /tmp/lutris.deb
 rm /tmp/lutris.deb
 ```
 
-## Install gpt4all
+### gpt4all
 
 https://gpt4all.io
 
@@ -126,7 +129,7 @@ chmod +x /tmp/gpt4all-installer-linux.run
 rm /tmp/gpt4all-installer-linux.run
 ```
 
-## Install pinokio.computer
+### pinokio.computer
 
 see https://github.com/pinokiocomputer/pinokio/releases for updates
 
