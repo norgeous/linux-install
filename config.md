@@ -2,7 +2,6 @@
 
 text here
 
----
 ## System Updates...
 
 ### Update system software package lists
@@ -19,7 +18,7 @@ sudo snap refresh
 ```sh
 sudo apt upgrade -y
 
-# not sure if this is needed https://askubuntu.com/a/761719
+# not sure if this part is needed, but it's from https://askubuntu.com/a/761719
 snap list | awk -F" " '{if ($1 && NR>1) { system("sudo snap refresh " $1) }}'
 ```
 
