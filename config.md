@@ -143,7 +143,7 @@ path2=/home/user/.local/share/icons/hicolor/256x256/apps/pinokio.png
 cp $path1 $path2
 ```
 
-## NAUTILLUS: Remove items from Nautillus (Files) sidebar
+## NAUTILLUS: Remove items from Nautillus (Files) sidebar...
 
 ### RMDOCS: Remove Documents
 
@@ -152,21 +152,21 @@ commentOut "XDG_DOCUMENTS_DIR=" "$HOME/.config/user-dirs.dirs"
 commentOut "DOCUMENTS=" "/etc/xdg/user-dirs.defaults"
 ```
 
-### RMMUSIC: Nautillus (Files) sidebar > Remove Music
+### RMMUSIC: Remove Music
 
 ```sh
 commentOut "XDG_MUSIC_DIR=" "$HOME/.config/user-dirs.dirs"
 commentOut "MUSIC=" "/etc/xdg/user-dirs.defaults"
 ```
 
-### RMPICTURES: Nautillus (Files) sidebar > Remove Pictures
+### RMPICTURES: Remove Pictures
 
 ```sh
 commentOut "XDG_PICTURES_DIR=" "$HOME/.config/user-dirs.dirs"
 commentOut "PICTURES=" "/etc/xdg/user-dirs.defaults"
 ```
 
-### RMVIDEOS: Nautillus (Files) sidebar > Remove Videos
+### RMVIDEOS: Remove Videos
 
 ```sh
 commentOut "XDG_VIDEOS_DIR=" "$HOME/.config/user-dirs.dirs"
