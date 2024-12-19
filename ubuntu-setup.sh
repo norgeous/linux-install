@@ -34,8 +34,9 @@ CHOICES=$(\
   "Use Up / Down and Space to select.\nEnter to start.\nEsc to cancel." 21 77 12 \
   "UPDATE"     "Update system software                               " OFF \
   "UPGRADE"    "Upgrade system software                              " OFF \
-  "UNBLOAT"    "Remove Ubuntu bloat                                  " OFF \
   "AUTOREMOVE" "Autoremove packages                                  " OFF \
+  "SNAPUP"     "Refresh snaps                                        " OFF \
+  "UNBLOAT"    "Remove Ubuntu bloat                                  " OFF \
   "MPV"        "Install MPV                                          " OFF \
   "GIMP"       "Install GIMP                                         " OFF \
   "INKSCAPE"   "Install InkScape                                     " OFF \
@@ -65,13 +66,17 @@ for i in $CHOICES; do
     sudo apt upgrade
   fi
 
-  if [[ $i == "\"UNBLOAT\"" ]]; then
-    sudo apt remove deja-dup rhythmbox cheese totem
-    sudo snap remove thunderbird
-  fi
-
   if [[ $i == "\"AUTOREMOVE\"" ]]; then
     sudo apt autoremove
+  fi
+
+  if [[ $i == "\"SNAPUP\"" ]]; then
+    sudo snap refresh
+  fi
+
+  if [[ $i == "\"UNBLOAT\"" ]]; then
+    sudo apt remove deja-dup rhythmbox cheese totem
+    sudo snap remove thunderbird cups
   fi
 
   if [[ $i == "\"MPV\"" ]]; then
@@ -141,7 +146,9 @@ for i in $CHOICES; do
     chmod +x /tmp/pinokio.deb
     sudo dpkg -i /tmp/pinokio.deb
     rm /tmp/pinokio.deb
-    # TODO: .desktop link file icon is broken, because its randomly sized and in the 0x0 directory
+    
+    # fix the .desktop link file icon, as it seems to be broken
+    cp /usr/share/icons/hicolor/0x0/apps/pinokio.png /home/user/.local/share/icons/hicolor/256x256/apps/pinokio.png
   fi
 
   if [[ "$i" == '"RMDOCS"' ]]; then
