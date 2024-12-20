@@ -35,7 +35,7 @@ sudo apt remove deja-dup rhythmbox cheese totem
 sudo snap remove thunderbird cups
 ```
 
-### Deactivate Wayland
+### Disable Wayland
 
 This makes the Ubuntu UI much faster
 
