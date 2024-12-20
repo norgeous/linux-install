@@ -35,6 +35,14 @@ sudo apt remove deja-dup rhythmbox cheese totem
 sudo snap remove thunderbird cups
 ```
 
+### Deactivate Wayland
+
+This makes the Ubuntu UI much faster
+
+```sh
+uncomment "#WaylandEnable=false" "/etc/gdm3/custom.conf"
+```
+
 ## Install Software...
 
 ### MPV
