@@ -110,7 +110,7 @@ chmod +x ./scripts/syncthing.sh
 ./scripts/syncthing.sh
 ```
 
-### Lutris (Steam, Epic, etc)
+### Lutris (for Steam, Epic, EA, Ubisoft, GOG)
 
 see https://github.com/lutris/lutris/releases for updates
 
