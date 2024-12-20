@@ -160,9 +160,13 @@ cp $path1 $path2
 ### Remove Documents
 
 ```sh
-sudo commentOut "XDG_DOCUMENTS_DIR=" "$HOME/.config/user-dirs.dirs"
-sudo commentOut "DOCUMENTS=" "/etc/xdg/user-dirs.defaults"
-# sed -i "/$1/s/^/#/" "$2"
+FIND="XDG_DOCUMENTS_DIR="
+FILE="$HOME/.config/user-dirs.dirs"
+sed -i "/$FIND/s/^/#/" "$FILE" # comment out line
+
+FIND="DOCUMENTS="
+FILE="/etc/xdg/user-dirs.defaults"
+sed -i "/$FIND/s/^/#/" "$FILE" # comment out line
 ```
 
 ### Remove Music
