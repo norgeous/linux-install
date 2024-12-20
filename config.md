@@ -166,7 +166,7 @@ sed -i "/$FIND/s/^/#/" "$FILE" # comment out line
 
 FIND="DOCUMENTS="
 FILE="/etc/xdg/user-dirs.defaults"
-sed -i "/$FIND/s/^/#/" "$FILE" # comment out line
+sudo sed -i "/$FIND/s/^/#/" "$FILE" # comment out line
 ```
 
 ### Remove Music
