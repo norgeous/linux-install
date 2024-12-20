@@ -172,20 +172,35 @@ sudo sed -i "/$FIND/s/^/#/" "$FILE" # comment out line
 ### Remove Music
 
 ```sh
-sudo commentOut "XDG_MUSIC_DIR=" "$HOME/.config/user-dirs.dirs"
-sudo commentOut "MUSIC=" "/etc/xdg/user-dirs.defaults"
+FIND="XDG_MUSIC_DIR="
+FILE="$HOME/.config/user-dirs.dirs"
+sed -i "/$FIND/s/^/#/" "$FILE" # comment out line
+
+FIND="MUSIC="
+FILE="/etc/xdg/user-dirs.defaults"
+sudo sed -i "/$FIND/s/^/#/" "$FILE" # comment out line
 ```
 
 ### Remove Pictures
 
 ```sh
-sudo commentOut "XDG_PICTURES_DIR=" "$HOME/.config/user-dirs.dirs"
-sudo commentOut "PICTURES=" "/etc/xdg/user-dirs.defaults"
+FIND="XDG_PICTURES_DIR="
+FILE="$HOME/.config/user-dirs.dirs"
+sed -i "/$FIND/s/^/#/" "$FILE" # comment out line
+
+FIND="PICTURES="
+FILE="/etc/xdg/user-dirs.defaults"
+sudo sed -i "/$FIND/s/^/#/" "$FILE" # comment out line
 ```
 
 ### Remove Videos
 
 ```sh
-sudo commentOut "XDG_VIDEOS_DIR=" "$HOME/.config/user-dirs.dirs"
-sudo commentOut "VIDEOS=" "/etc/xdg/user-dirs.defaults"
+FIND="XDG_VIDEOS_DIR="
+FILE="$HOME/.config/user-dirs.dirs"
+sed -i "/$FIND/s/^/#/" "$FILE" # comment out line
+
+FIND="VIDEOS="
+FILE="/etc/xdg/user-dirs.defaults"
+sudo sed -i "/$FIND/s/^/#/" "$FILE" # comment out line
 ```
