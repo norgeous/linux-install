@@ -40,7 +40,9 @@ sudo snap remove thunderbird cups
 This makes the Ubuntu UI much faster
 
 ```sh
-sudo uncomment "#WaylandEnable=false" "/etc/gdm3/custom.conf"
+FIND="#WaylandEnable=false"
+FILE="/etc/gdm3/custom.conf"
+sudo sed -i "/$FIND/s/^#//" "$FILE" # uncomment line
 ```
 
 ## Install Software...
@@ -160,6 +162,7 @@ cp $path1 $path2
 ```sh
 sudo commentOut "XDG_DOCUMENTS_DIR=" "$HOME/.config/user-dirs.dirs"
 sudo commentOut "DOCUMENTS=" "/etc/xdg/user-dirs.defaults"
+# sed -i "/$1/s/^/#/" "$2"
 ```
 
 ### Remove Music
