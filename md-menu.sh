@@ -21,10 +21,11 @@ function log {
 }
 
 function commentOut {
-  FIND="$1"
-  REPLACE="# $1"
-  FILE="$2"
-  sudo sed -i "s/^$FIND/$REPLACE/g" "$FILE"
+  sudo sed -i "/$1/s/^/#/" "$2"
+}
+
+function uncomment {
+  sudo sed -i "/$1/s/^#//" "$2"
 }
 
 function whipit {

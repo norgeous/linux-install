@@ -21,10 +21,11 @@ function log {
 }
 
 function commentOut {
-  FIND="$1"
-  REPLACE="# $1"
-  FILE="$2"
-  sudo sed -i "s/^$FIND/$REPLACE/g" "$FILE"
+  sudo sed -i "/$1/s/^/#/" "$2"
+}
+
+function uncomment {
+  sudo sed -i "/$1/s/^#//" "$2"
 }
 
 title "norgeous' Ubuntu setup"
@@ -36,6 +37,7 @@ CHOICES=$(\
   "UPGRADE"    "Upgrade system software                              " OFF \
   "AUTOREMOVE" "Autoremove packages                                  " OFF \
   "UNBLOAT"    "Remove Ubuntu bloat                                  " OFF \
+  "NOWAY"      "Disable Wayland                                      " OFF \
   "MPV"        "Install MPV                                          " OFF \
   "GIMP"       "Install GIMP (snap)                                  " OFF \
   "INKSCAPE"   "Install InkScape (snap)                              " OFF \
@@ -76,6 +78,10 @@ for i in $CHOICES; do
   if [[ "$i" == '"UNBLOAT"' ]]; then
     sudo apt remove deja-dup rhythmbox cheese totem
     sudo snap remove thunderbird cups
+  fi
+
+  if [[ "$i" == '"NOWAY"' ]]; then
+    uncomment "#WaylandEnable=false" "/etc/gdm3/custom.conf"
   fi
 
   if [[ "$i" == '"MPV"' ]]; then
