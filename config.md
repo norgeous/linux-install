@@ -40,7 +40,7 @@ sudo snap remove thunderbird cups
 This makes the Ubuntu UI much faster
 
 ```sh
-uncomment "#WaylandEnable=false" "/etc/gdm3/custom.conf"
+sudo uncomment "#WaylandEnable=false" "/etc/gdm3/custom.conf"
 ```
 
 ## Install Software...
@@ -158,27 +158,27 @@ cp $path1 $path2
 ### Remove Documents
 
 ```sh
-commentOut "XDG_DOCUMENTS_DIR=" "$HOME/.config/user-dirs.dirs"
-commentOut "DOCUMENTS=" "/etc/xdg/user-dirs.defaults"
+sudo commentOut "XDG_DOCUMENTS_DIR=" "$HOME/.config/user-dirs.dirs"
+sudo commentOut "DOCUMENTS=" "/etc/xdg/user-dirs.defaults"
 ```
 
 ### Remove Music
 
 ```sh
-commentOut "XDG_MUSIC_DIR=" "$HOME/.config/user-dirs.dirs"
-commentOut "MUSIC=" "/etc/xdg/user-dirs.defaults"
+sudo commentOut "XDG_MUSIC_DIR=" "$HOME/.config/user-dirs.dirs"
+sudo commentOut "MUSIC=" "/etc/xdg/user-dirs.defaults"
 ```
 
 ### Remove Pictures
 
 ```sh
-commentOut "XDG_PICTURES_DIR=" "$HOME/.config/user-dirs.dirs"
-commentOut "PICTURES=" "/etc/xdg/user-dirs.defaults"
+sudo commentOut "XDG_PICTURES_DIR=" "$HOME/.config/user-dirs.dirs"
+sudo commentOut "PICTURES=" "/etc/xdg/user-dirs.defaults"
 ```
 
 ### Remove Videos
 
 ```sh
-commentOut "XDG_VIDEOS_DIR=" "$HOME/.config/user-dirs.dirs"
-commentOut "VIDEOS=" "/etc/xdg/user-dirs.defaults"
+sudo commentOut "XDG_VIDEOS_DIR=" "$HOME/.config/user-dirs.dirs"
+sudo commentOut "VIDEOS=" "/etc/xdg/user-dirs.defaults"
 ```

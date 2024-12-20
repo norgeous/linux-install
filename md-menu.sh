@@ -21,11 +21,11 @@ function log {
 }
 
 function commentOut {
-  sudo sed -i "/$1/s/^/#/" "$2"
+  sed -i "/$1/s/^/#/" "$2"
 }
 
 function uncomment {
-  sudo sed -i "/$1/s/^#//" "$2"
+  sed -i "/$1/s/^#//" "$2"
 }
 
 function whipit {
