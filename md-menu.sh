@@ -20,14 +20,6 @@ function log {
   echo -e "🧌  ${C}$1${N}\n"
 }
 
-function commentOut {
-  sed -i "/$1/s/^/#/" "$2"
-}
-
-function uncomment {
-  sed -i "/$1/s/^#//" "$2"
-}
-
 function whipit {
   TITLE="$1"
   OPTIONS=$2
