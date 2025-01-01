@@ -45,20 +45,19 @@ function runChoices {
 }
 
 md=$(cat $1)
-# echo "$md"
 
 function mapFn {
-  # echo "GOT: [[[$1]]]"
-  # echo  ${1[@]}
   echo "--------------------------------------------------------"
   printf "Seq: %6d: GOT '%s'..." $1 "$2"
-  # mail -s "This is not a spam..." "$2" </path/to/body
   printf "\e[3D, done.\n"
 }
 mapfile < <(echo -n "$md") -t -c 1 -C mapFn
 
 sed '/^```sh/,/^```/ p' < config.md
 sed -n '/^### / p' < config.md
+
+sed -n '/## /,/## |$/ p' config.md
+sed -n '/### /,/### |$/ p' config.md
 
 log "Done."
 echo "Press any key to exit..."

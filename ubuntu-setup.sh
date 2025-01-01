@@ -86,7 +86,7 @@ for i in $CHOICES; do
 
   if [[ "$i" == '"MPV"' ]]; then
     sudo apt install -y mpv
-    # TODO: set mpv.conf and input.conf
+    echo "r playlist-shuffle" >> "~/.config/mpv/input.conf"
   fi
 
   if [[ "$i" == '"GIMP"' ]]; then
