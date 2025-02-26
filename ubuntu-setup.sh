@@ -70,11 +70,11 @@ for i in $CHOICES; do
   fi
 
   if [[ $i == "\"AUTOREMOVE\"" ]]; then
-    sudo apt autoremove
+    sudo apt autoremove -y
   fi
 
   if [[ $i == "\"UNBLOAT\"" ]]; then
-    sudo apt remove deja-dup rhythmbox cheese totem
+    sudo apt remove -y deja-dup rhythmbox cheese totem
     sudo snap remove thunderbird cups
   fi
 
@@ -102,6 +102,7 @@ for i in $CHOICES; do
 
   if [[ "$i" == '"VSCODE"' ]]; then
     sudo snap install code --classic
+    sudo apt remove gnome-text-editor
   fi
 
   if [[ "$i" == '"GHDESKTOP"' ]]; then
