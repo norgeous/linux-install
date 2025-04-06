@@ -72,6 +72,8 @@ for i in $CHOICES; do
     sudo apt autoremove -y
   fi
 
+  # https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+
   if [[ $i == "\"MPV\"" ]]; then
     sudo apt install -y mpv
     # TODO: set mpv.conf and input.conf
