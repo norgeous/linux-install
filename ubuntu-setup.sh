@@ -32,8 +32,7 @@ title "norgeous' Ubuntu setup"
 CHOICES=$(\
   whiptail --title "norgeous' Ubuntu setup" --checklist \
   "Use Up / Down and Space to select.\nEnter to start.\nEsc to cancel." 21 77 12 \
-  "UPDATE"     "Update system software package lists                 " OFF \
-  "UPGRADE"    "Upgrade system software                              " OFF \
+  "UPGRADE"    "Update and upgrade system software                   " OFF \
   "AUTOREMOVE" "Autoremove packages                                  " OFF \
   "UNBLOAT"    "Remove Ubuntu bloat                                  " OFF \
   "MPV"        "Install MPV                                          " OFF \
@@ -58,12 +57,8 @@ CHOICES=$(\
 for i in $CHOICES; do
   log "Working on $i..."
 
-  if [[ $i == "\"UPDATE\"" ]]; then
-    sudo apt update
-    sudo snap refresh # TODO: does this actually perform the upgrade also?
-  fi
-
   if [[ $i == "\"UPGRADE\"" ]]; then
+    sudo apt update
     sudo apt upgrade -y
     sudo snap refresh
   fi
