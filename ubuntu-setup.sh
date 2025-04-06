@@ -121,8 +121,8 @@ for i in $CHOICES; do
   fi
 
   if [[ "$i" == '"KEEPASSXC"' ]]; then
-    sudo apt install -y keepassxc
-    # sudo snap install keepassxc
+    # sudo apt install -y keepassxc
+    sudo snap install keepassxc
   fi
 
   # addons into firefox (they need to be enabled manually)
