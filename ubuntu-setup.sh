@@ -89,9 +89,8 @@ for i in $CHOICES; do
     sudo snap install blender
   fi
 
-  # sudo apt install -y git build-essential
-
   if [[ $i == "\"NODE\"" ]]; then
+    sudo apt install -y git build-essential
     git clone https://github.com/tj/n.git /tmp/n
     cd /tmp/n
     sudo make install
