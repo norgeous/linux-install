@@ -163,9 +163,7 @@ EOF
 
   if [[ "$i" == '"GHDESKTOP"' ]]; then
     # from https://github.com/shiftkey/desktop
-    # TODO: this is breaking apt upgrade at the moment due to SSL expired / wrong on shiftkey.dev
-    # wget -qO - https://apt.packages.shiftkey.dev/gpg.key | gpg --dearmor | sudo tee /usr/share/keyrings/shiftkey-packages.gpg > /dev/null
-    # sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/shiftkey-packages.gpg] https://apt.packages.shiftkey.dev/ubuntu/ any main" > /etc/apt/sources.list.d/shiftkey-packages.list'
+    # standard gpg key is breaking apt upgrade at the moment due to SSL expired / wrong on shiftkey.dev
     # so we are using mwt.me mirror
     wget -qO - https://mirror.mwt.me/shiftkey-desktop/gpgkey | gpg --dearmor | sudo tee /usr/share/keyrings/mwt-desktop.gpg > /dev/null
     sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/mwt-desktop.gpg] https://mirror.mwt.me/shiftkey-desktop/deb/ any main" > /etc/apt/sources.list.d/mwt-desktop.list'
