@@ -39,8 +39,6 @@ sudo sed -i "/$FIND/s/^#//" "$FILE" # uncomment line
 
 ### MPV
 
-TODO: set mpv.conf and input.conf
-
 ```sh
 sudo apt install -y mpv
 echo "r playlist-shuffle" >> "~/.config/mpv/input.conf"
