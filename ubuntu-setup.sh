@@ -68,7 +68,7 @@ for i in $CHOICES; do
     sudo apt update
     sudo apt upgrade -y
     sudo snap refresh
-    flatpak update -y
+    command -v flatpak && flatpak update -y
   fi
 
   if [[ "$i" == '"UNBLOAT"' ]]; then
@@ -219,7 +219,8 @@ for i in $CHOICES; do
     chmod +x /tmp/gpt4all-installer-linux.run
     /tmp/gpt4all-installer-linux.run
     rm /tmp/gpt4all-installer-linux.run
-    # TODO: .desktop link appears to install to ~/Desktop, and doesnt appear in dock in Ubuntu 24.04
+    mv ~/Desktop/GPT4All.desktop ~/.local/share/applications/GPT4All.desktop
+    chmod +x ~/.local/share/applications/GPT4All.desktop
   fi
 
   if [[ "$i" == '"PINOKIO"' ]]; then
