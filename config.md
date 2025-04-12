@@ -27,7 +27,7 @@ sudo apt autoremove
 
 ### Disable Wayland
 
-This makes the Ubuntu UI much faster
+This seems to makes the Ubuntu UI much faster in some situations
 
 ```sh
 FIND="#WaylandEnable=false"
