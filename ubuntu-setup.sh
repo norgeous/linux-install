@@ -189,23 +189,23 @@ for i in $CHOICES; do
   fi
 
   if [[ "$i" == '"RMDOCS"' ]]; then
-    commentOut "XDG_DOCUMENTS_DIR=" "$HOME/.config/user-dirs.dirs"
-    commentOut "DOCUMENTS=" "/etc/xdg/user-dirs.defaults" # must be edited for changes to persist after reboot
+    sudo commentOut "XDG_DOCUMENTS_DIR=" "$HOME/.config/user-dirs.dirs"
+    sudo commentOut "DOCUMENTS=" "/etc/xdg/user-dirs.defaults" # must be edited for changes to persist after reboot
   fi
 
   if [[ "$i" == '"RMMUSIC"' ]]; then
-    commentOut "XDG_MUSIC_DIR=" "$HOME/.config/user-dirs.dirs"
-    commentOut "MUSIC=" "/etc/xdg/user-dirs.defaults" # must be edited for changes to persist after reboot
+    sudo commentOut "XDG_MUSIC_DIR=" "$HOME/.config/user-dirs.dirs"
+    sudo commentOut "MUSIC=" "/etc/xdg/user-dirs.defaults" # must be edited for changes to persist after reboot
   fi
 
   if [[ "$i" == '"RMPICTURES"' ]]; then
-    commentOut "XDG_PICTURES_DIR=" "$HOME/.config/user-dirs.dirs"
-    commentOut "PICTURES=" "/etc/xdg/user-dirs.defaults" # must be edited for changes to persist after reboot
+    sudo commentOut "XDG_PICTURES_DIR=" "$HOME/.config/user-dirs.dirs"
+    sudo commentOut "PICTURES=" "/etc/xdg/user-dirs.defaults" # must be edited for changes to persist after reboot
   fi
 
   if [[ "$i" == '"RMVIDEOS"' ]]; then
-    commentOut "XDG_VIDEOS_DIR=" "$HOME/.config/user-dirs.dirs"
-    commentOut "VIDEOS=" "/etc/xdg/user-dirs.defaults" # must be edited for changes to persist after reboot
+    sudo commentOut "XDG_VIDEOS_DIR=" "$HOME/.config/user-dirs.dirs"
+    sudo commentOut "VIDEOS=" "/etc/xdg/user-dirs.defaults" # must be edited for changes to persist after reboot
   fi
 
   echo
