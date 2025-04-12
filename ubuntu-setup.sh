@@ -153,26 +153,10 @@ for i in $CHOICES; do
     # fixing the copy lines up/down keybindings
     cat <<'EOF' > ~/.config/Code/User/keybindings.json
 [
-    {
-        "key": "shift+alt+up",
-        "command": "editor.action.copyLinesUpAction",
-        "when": "editorTextFocus && !editorReadonly"
-    },
-    {
-        "key": "ctrl+shift+alt+up",
-        "command": "-editor.action.copyLinesUpAction",
-        "when": "editorTextFocus && !editorReadonly"
-    },
-    {
-        "key": "shift+alt+down",
-        "command": "editor.action.copyLinesDownAction",
-        "when": "editorTextFocus && !editorReadonly"
-    },
-    {
-        "key": "ctrl+shift+alt+down",
-        "command": "-editor.action.copyLinesDownAction",
-        "when": "editorTextFocus && !editorReadonly"
-    }
+    { "key": "shift+alt+up",        "command": "editor.action.copyLinesUpAction",    "when": "editorTextFocus && !editorReadonly" },
+    { "key": "ctrl+shift+alt+up",   "command": "-editor.action.copyLinesUpAction",   "when": "editorTextFocus && !editorReadonly" },
+    { "key": "shift+alt+down",      "command": "editor.action.copyLinesDownAction",  "when": "editorTextFocus && !editorReadonly" },
+    { "key": "ctrl+shift+alt+down", "command": "-editor.action.copyLinesDownAction", "when": "editorTextFocus && !editorReadonly" }
 ]
 EOF
   fi
