@@ -51,13 +51,19 @@ function mapFn {
   printf "Seq: %6d: GOT '%s'..." $1 "$2"
   printf "\e[3D, done.\n"
 }
-mapfile < <(echo -n "$md") -t -c 1 -C mapFn
+# mapfile < <(echo -n "$md") -t -c 1 -C mapFn
 
-sed '/^```sh/,/^```/ p' < config.md
+# sed '/^```sh/,/^```/ p' < config.md
+# echo "!!!!!!!!!!!!!!!!!!!!!!1"
+# sed -n '/^### / p' < config.md
+# echo "!!!!!!!!!!!!!!!!!!!!!!2"
+# sed -n '/## /,/## |$/ p' config.md
+# echo "!!!!!!!!!!!!!!!!!!!!!!3"
+# sed -n '/### /,/### |$/ p' config.md
+
+
+sed -n '/^## / p' < config.md
 sed -n '/^### / p' < config.md
-
-sed -n '/## /,/## |$/ p' config.md
-sed -n '/### /,/### |$/ p' config.md
 
 log "Done."
 echo "Press any key to exit..."
