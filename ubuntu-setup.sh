@@ -90,7 +90,7 @@ for i in $CHOICES; do
   # flatpak install -y flathub net.nokyan.Resources
 
   # addons into firefox (they need to be enabled manually)
-  # firefox_default_profile=$(echo /home/user/snap/firefox/common/.mozilla/firefox/*.default/extensions)
+  # firefox_default_profile=$(echo ~/snap/firefox/common/.mozilla/firefox/*.default/extensions)
   # wget https://addons.mozilla.org/firefox/downloads/file/4458450/ublock_origin-latest.xpi -O $firefox_default_profile/uBlock0@raymondhill.net.xpi
   # wget https://addons.mozilla.org/firefox/downloads/file/4465727/sponsorblock-latest.xpi -O $firefox_default_profile/sponsorBlocker@ajay.app.xpi
 
