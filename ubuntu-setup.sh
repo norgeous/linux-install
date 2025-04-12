@@ -36,7 +36,8 @@ CHOICES=$(\
   "UPGRADE"    "Update and upgrade system software                   " OFF \
   "UNBLOAT"    "Remove Ubuntu bloat                                  " OFF \
   "AUTOREMOVE" "Autoremove packages                                  " OFF \
-  "NOWAY"      "Disable Wayland                                      " OFF \
+  "CHROME"     "Install Chrome                                       " OFF \
+  "CHROMIUM"   "Install Chromium                                     " OFF \
   "MPV"        "Install MPV                                          " OFF \
   "GIMP"       "Install GIMP (snap)                                  " OFF \
   "INKSCAPE"   "Install InkScape (snap)                              " OFF \
@@ -78,9 +79,16 @@ for i in $CHOICES; do
     sudo uncomment "#WaylandEnable=false" "/etc/gdm3/custom.conf"
   fi
 
-  # https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+  if [[ "$i" == '"CHROME"' ]]; then
+    wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -O /tmp/google-chrome.deb
+    chmod +x /tmp/google-chrome.deb
+    sudo dpkg -i /tmp/google-chrome.deb
+    rm /tmp/google-chrome.deb
+  fi
 
-  # snap install chromium
+  if [[ "$i" == '"CHROMIUM"' ]]; then
+    snap install chromium
+  fi
 
   # sudo apt install flatpak
   # flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
