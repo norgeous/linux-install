@@ -210,7 +210,7 @@ for i in $CHOICES; do
     rm /tmp/pinokio.deb
     
     # fix the .desktop link file icon, as it seems to be broken
-    cp /usr/share/icons/hicolor/0x0/apps/pinokio.png /home/user/.local/share/icons/hicolor/256x256/apps/pinokio.png
+    cp /usr/share/icons/hicolor/0x0/apps/pinokio.png ~/.local/share/icons/hicolor/256x256/apps/pinokio.png
   fi
 
   if [[ "$i" == '"RMDOCS"' ]]; then
