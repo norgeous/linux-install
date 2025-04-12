@@ -36,6 +36,7 @@ CHOICES=$(\
   "UPGRADE"    "Update and upgrade system software                   " OFF \
   "UNBLOAT"    "Remove Ubuntu bloat                                  " OFF \
   "AUTOREMOVE" "Autoremove packages                                  " OFF \
+  "NOWAY"      "Disable Wayland                                      " OFF \
   "CHROME"     "Install Chrome                                       " OFF \
   "CHROMIUM"   "Install Chromium                                     " OFF \
   "MPV"        "Install MPV                                          " OFF \
