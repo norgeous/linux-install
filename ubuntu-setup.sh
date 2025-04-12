@@ -78,11 +78,6 @@ for i in $CHOICES; do
     sudo uncomment "#WaylandEnable=false" "/etc/gdm3/custom.conf"
   fi
 
-  if [[ "$i" == '"MPV"' ]]; then
-    sudo apt install -y mpv
-    echo "r playlist-shuffle" >> "~/.config/mpv/input.conf"
-  fi
-
   # https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 
   # snap install chromium
