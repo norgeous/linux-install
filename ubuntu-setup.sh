@@ -68,6 +68,7 @@ for i in $CHOICES; do
     sudo apt update
     sudo apt upgrade -y
     sudo snap refresh
+    flatpak update -y
   fi
 
   if [[ "$i" == '"UNBLOAT"' ]]; then
