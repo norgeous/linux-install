@@ -39,7 +39,9 @@ CHOICES=$(\
   "NOWAY"      "Disable Wayland                                      " OFF \
   "CHROME"     "Install Chrome                                       " OFF \
   "CHROMIUM"   "Install Chromium                                     " OFF \
+  "WATERFOX"   "Install Waterfox                                     " OFF \
   "TOP"        "Install htop and nvtop                               " OFF \
+  "RESOURCES"  "Install Nokyan Resources                             " OFF \
   "MPV"        "Install MPV                                          " OFF \
   "GIMP"       "Install GIMP (snap)                                  " OFF \
   "INKSCAPE"   "Install InkScape (snap)                              " OFF \
@@ -92,13 +94,11 @@ for i in $CHOICES; do
     snap install chromium
   fi
 
-  # sudo apt install -y flatpak
-  # flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-  # flatpak install -y flathub net.waterfox.waterfox
-
-  # sudo apt install -y flatpak
-  # flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-  # flatpak install -y flathub net.nokyan.Resources
+  if [[ "$i" == '"WATERFOX"' ]]; then
+    sudo apt install -y flatpak
+    flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+    flatpak install -y flathub net.waterfox.waterfox
+  fi
 
   # addons into firefox (they need to be enabled manually)
   # firefox_default_profile=$(echo ~/snap/firefox/common/.mozilla/firefox/*.default/extensions)
@@ -107,6 +107,12 @@ for i in $CHOICES; do
 
   if [[ "$i" == '"TOP"' ]]; then
     sudo apt install -y htop nvtop
+  fi
+
+  if [[ "$i" == '"RESOURCES"' ]]; then
+    sudo apt install -y flatpak
+    flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+    flatpak install -y flathub net.nokyan.Resources
   fi
 
   if [[ "$i" == '"MPV"' ]]; then
