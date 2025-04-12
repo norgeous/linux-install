@@ -123,6 +123,32 @@ for i in $CHOICES; do
     # install VSCode and remove Gnome Text Editor
     sudo snap install code --classic
     sudo apt remove -y gnome-text-editor
+
+    # fixing the copy lines keybindings
+    # json into ~/.config/Code/User/keybindings.json
+
+    # [
+    # {
+    #     "key": "shift+alt+up",
+    #     "command": "editor.action.copyLinesUpAction",
+    #     "when": "editorTextFocus && !editorReadonly"
+    # },
+    # {
+    #     "key": "ctrl+shift+alt+up",
+    #     "command": "-editor.action.copyLinesUpAction",
+    #     "when": "editorTextFocus && !editorReadonly"
+    # },
+    # {
+    #     "key": "shift+alt+down",
+    #     "command": "editor.action.copyLinesDownAction",
+    #     "when": "editorTextFocus && !editorReadonly"
+    # },
+    # {
+    #     "key": "ctrl+shift+alt+down",
+    #     "command": "-editor.action.copyLinesDownAction",
+    #     "when": "editorTextFocus && !editorReadonly"
+    # }
+    # ]
   fi
 
   if [[ "$i" == '"GHDESKTOP"' ]]; then
