@@ -189,22 +189,22 @@ for i in $CHOICES; do
   fi
 
   if [[ "$i" == '"RMDOCS"' ]]; then
-    sudo commentOut "XDG_DOCUMENTS_DIR=" "$HOME/.config/user-dirs.dirs"
+    commentOut "XDG_DOCUMENTS_DIR=" "$HOME/.config/user-dirs.dirs"
     sudo commentOut "DOCUMENTS=" "/etc/xdg/user-dirs.defaults" # must be edited for changes to persist after reboot
   fi
 
   if [[ "$i" == '"RMMUSIC"' ]]; then
-    sudo commentOut "XDG_MUSIC_DIR=" "$HOME/.config/user-dirs.dirs"
+    commentOut "XDG_MUSIC_DIR=" "$HOME/.config/user-dirs.dirs"
     sudo commentOut "MUSIC=" "/etc/xdg/user-dirs.defaults" # must be edited for changes to persist after reboot
   fi
 
   if [[ "$i" == '"RMPICTURES"' ]]; then
-    sudo commentOut "XDG_PICTURES_DIR=" "$HOME/.config/user-dirs.dirs"
+    commentOut "XDG_PICTURES_DIR=" "$HOME/.config/user-dirs.dirs"
     sudo commentOut "PICTURES=" "/etc/xdg/user-dirs.defaults" # must be edited for changes to persist after reboot
   fi
 
   if [[ "$i" == '"RMVIDEOS"' ]]; then
-    sudo commentOut "XDG_VIDEOS_DIR=" "$HOME/.config/user-dirs.dirs"
+    commentOut "XDG_VIDEOS_DIR=" "$HOME/.config/user-dirs.dirs"
     sudo commentOut "VIDEOS=" "/etc/xdg/user-dirs.defaults" # must be edited for changes to persist after reboot
   fi
 
