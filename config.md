@@ -41,7 +41,7 @@ sudo sed -i "/$FIND/s/^#//" "$FILE" # uncomment line
 
 ```sh
 sudo apt install -y mpv
-echo "r playlist-shuffle" >> "~/.config/mpv/input.conf"
+echo "r playlist-shuffle" > "~/.config/mpv/input.conf"
 ```
 
 ### GIMP (snap)
