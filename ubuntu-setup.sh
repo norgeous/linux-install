@@ -45,7 +45,7 @@ CHOICES=$(\
   "SYNCTHING"  "Install Syncthing                                    " OFF \
   "KEEPASSXC"  "Install KeepassXC                                    " OFF \
   "STEAM"      "Install Steam                                        " OFF \
-  "LUTRIS"     "Install Lutris (Steam, Epic Games, etc)              " OFF \
+  "LUTRIS"     "Install Lutris (for Steam, Epic, EA, Ubisoft, GOG)   " OFF \
   "GPT4ALL"    "Install gpt4all                                      " OFF \
   "PINOKIO"    "Install pinokio.computer                             " OFF \
   "RMDOCS"     "Nautillus (Files) sidebar > Remove Documents         " OFF \
