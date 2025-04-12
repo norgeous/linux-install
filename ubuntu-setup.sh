@@ -137,7 +137,6 @@ for i in $CHOICES; do
   fi
 
   if [[ "$i" == '"KEEPASSXC"' ]]; then
-    # sudo apt install -y keepassxc
     sudo snap install keepassxc
   fi
 
