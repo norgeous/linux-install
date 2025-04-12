@@ -11,5 +11,5 @@ cd linux-install
 
 ## Manual steps
 
-- After installing Steam (via Lutris), log in and goto "Steam Settings > Compatibility > Enable Steam Play for all other titles" and turn it on
+- After installing Steam, log in and goto "Steam Settings > Compatibility > Enable Steam Play for all other titles" and turn it on
   - This enables proton and wine, the same as a Steam Deck
