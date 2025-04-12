@@ -57,18 +57,18 @@ CHOICES=$(\
 for i in $CHOICES; do
   log "Working on $i..."
 
-  if [[ $i == "\"UPGRADE\"" ]]; then
+  if [[ "$i" == '"UPGRADE"' ]]; then
     sudo apt update
     sudo apt upgrade -y
     sudo snap refresh
   fi
 
-  if [[ $i == "\"UNBLOAT\"" ]]; then
+  if [[ "$i" == '"UNBLOAT"' ]]; then
     sudo apt remove -y deja-dup rhythmbox cheese totem
     sudo snap remove thunderbird cups
   fi
 
-  if [[ $i == "\"AUTOREMOVE\"" ]]; then
+  if [[ "$i" == '"AUTOREMOVE"' ]]; then
     sudo apt autoremove -y
   fi
 
@@ -83,24 +83,24 @@ for i in $CHOICES; do
 
   # flatpak install -y flathub net.nokyan.Resources
 
-  if [[ $i == "\"MPV\"" ]]; then
+  if [[ "$i" == '"MPV"' ]]; then
     sudo apt install -y mpv
     echo "r playlist-shuffle" > "~/.config/mpv/input.conf"
   fi
 
-  if [[ $i == "\"GIMP\"" ]]; then
+  if [[ "$i" == '"GIMP"' ]]; then
     sudo snap install gimp
   fi
 
-  if [[ $i == "\"INKSCAPE\"" ]]; then
+  if [[ "$i" == '"INKSCAPE"' ]]; then
     sudo snap install inkscape
   fi
 
-  if [[ $i == "\"BLENDER\"" ]]; then
+  if [[ "$i" == '"BLENDER"' ]]; then
     sudo snap install blender
   fi
 
-  if [[ $i == "\"NODE\"" ]]; then
+  if [[ "$i" == '"NODE"' ]]; then
     sudo apt install -y git build-essential
     git clone https://github.com/tj/n.git /tmp/n
     cd /tmp/n
@@ -142,16 +142,16 @@ for i in $CHOICES; do
   # wget https://addons.mozilla.org/firefox/downloads/file/4465727/sponsorblock-latest.xpi -O $firefox_default_profile/sponsorBlocker@ajay.app.xpi
 
 
-  if [[ $i == "\"SYNCTHING\"" ]]; then
+  if [[ "$i" == '"SYNCTHING"' ]]; then
     chmod +x ./scripts/syncthing.sh
     ./scripts/syncthing.sh
   fi
 
-  if [[ $i == "\"STEAM\"" ]]; then
+  if [[ "$i" == '"STEAM"' ]]; then
     sudo apt install -y steam
   fi
 
-  if [[ $i == "\"LUTRIS\"" ]]; then
+  if [[ "$i" == '"LUTRIS"' ]]; then
     # see https://github.com/lutris/lutris/releases
     latest_deb_url=$(wget -q -O - https://api.github.com/repos/lutris/lutris/releases/latest  |  jq -r '.assets[] | select(.name | contains ("deb")) | .browser_download_url')
     echo $latest_deb_url
