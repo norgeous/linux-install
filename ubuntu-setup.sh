@@ -64,7 +64,7 @@ for i in $CHOICES; do
     sudo apt upgrade -y
     sudo snap refresh
   fi
-  
+
   if [[ "$i" == '"UNBLOAT"' ]]; then
     sudo apt remove -y deja-dup rhythmbox cheese totem
     sudo snap remove thunderbird cups
