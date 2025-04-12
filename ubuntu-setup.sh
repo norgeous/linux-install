@@ -47,7 +47,7 @@ CHOICES=$(\
   "INKSCAPE"   "Install InkScape (snap)                              " OFF \
   "BLENDER"    "Install Blender (snap)                               " OFF \
   "NODE"       "Install tj/n                                         " OFF \
-  "VSCODE"     "Install VSCode (snap)                                " OFF \
+  "VSCODE"     "Install VSCode (snap) and remove Gnome Text Editor   " OFF \
   "GHDESKTOP"  "Install Github Desktop                               " OFF \
   "SYNCTHING"  "Install Syncthing                                    " OFF \
   "KEEPASSXC"  "Install KeepassXC                                    " OFF \
@@ -147,7 +147,6 @@ for i in $CHOICES; do
   fi
 
   if [[ "$i" == '"VSCODE"' ]]; then
-    # install VSCode and remove Gnome Text Editor
     sudo snap install code --classic
     sudo apt remove -y gnome-text-editor
 
@@ -213,8 +212,8 @@ for i in $CHOICES; do
     rm /tmp/lutris.deb
   fi
 
-  # GPT4ALL
   if [[ "$i" == '"GPT4ALL"' ]]; then
+    # see https://gpt4all.io/
     wget https://gpt4all.io/installers/gpt4all-installer-linux.run -O /tmp/gpt4all-installer-linux.run
     chmod +x /tmp/gpt4all-installer-linux.run
     /tmp/gpt4all-installer-linux.run
