@@ -39,6 +39,7 @@ CHOICES=$(\
   "NOWAY"      "Disable Wayland                                      " OFF \
   "CHROME"     "Install Chrome                                       " OFF \
   "CHROMIUM"   "Install Chromium                                     " OFF \
+  "TOP"        "Install htop and nvtop                               " OFF \
   "MPV"        "Install MPV                                          " OFF \
   "GIMP"       "Install GIMP (snap)                                  " OFF \
   "INKSCAPE"   "Install InkScape (snap)                              " OFF \
@@ -68,7 +69,7 @@ for i in $CHOICES; do
   fi
 
   if [[ "$i" == '"UNBLOAT"' ]]; then
-    sudo apt remove -y deja-dup rhythmbox cheese totem
+    sudo apt remove -y deja-dup rhythmbox cheese totem shotwell
     sudo snap remove thunderbird cups
   fi
 
@@ -102,6 +103,10 @@ for i in $CHOICES; do
   # firefox_default_profile=$(echo ~/snap/firefox/common/.mozilla/firefox/*.default/extensions)
   # wget https://addons.mozilla.org/firefox/downloads/file/4458450/ublock_origin-latest.xpi -O $firefox_default_profile/uBlock0@raymondhill.net.xpi
   # wget https://addons.mozilla.org/firefox/downloads/file/4465727/sponsorblock-latest.xpi -O $firefox_default_profile/sponsorBlocker@ajay.app.xpi
+
+  if [[ "$i" == '"TOP"' ]]; then
+    sudo apt install -y htop nvtop
+  fi
 
   if [[ "$i" == '"MPV"' ]]; then
     sudo apt install -y mpv
