@@ -74,6 +74,15 @@ for i in $CHOICES; do
 
   # https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 
+  # snap install chromium
+
+  # sudo apt install flatpak
+  # flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+
+  # flatpak install -y flathub net.waterfox.waterfox
+
+  # flatpak install -y flathub net.nokyan.Resources
+
   if [[ $i == "\"MPV\"" ]]; then
     sudo apt install -y mpv
     # TODO: set mpv.conf and input.conf
