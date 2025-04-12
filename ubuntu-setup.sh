@@ -37,11 +37,11 @@ CHOICES=$(\
   "UNBLOAT"    "Remove Ubuntu bloat                                  " OFF \
   "AUTOREMOVE" "Autoremove packages                                  " OFF \
   "NOWAY"      "Disable Wayland                                      " OFF \
-  "CHROME"     "Install Chrome                                       " OFF \
-  "CHROMIUM"   "Install Chromium                                     " OFF \
-  "WATERFOX"   "Install Waterfox                                     " OFF \
+  "CHROME"     "Install Chrome (deb)                                 " OFF \
+  "CHROMIUM"   "Install Chromium (snap)                              " OFF \
+  "WATERFOX"   "Install Waterfox (flatpak)                           " OFF \
   "TOP"        "Install htop and nvtop                               " OFF \
-  "RESOURCES"  "Install Nokyan Resources                             " OFF \
+  "RESOURCES"  "Install Nokyan Resources (flatpak)                   " OFF \
   "MPV"        "Install MPV                                          " OFF \
   "GIMP"       "Install GIMP (snap)                                  " OFF \
   "INKSCAPE"   "Install InkScape (snap)                              " OFF \
@@ -50,11 +50,11 @@ CHOICES=$(\
   "VSCODE"     "Install VSCode (snap) and remove Gnome Text Editor   " OFF \
   "GHDESKTOP"  "Install Github Desktop                               " OFF \
   "SYNCTHING"  "Install Syncthing                                    " OFF \
-  "KEEPASSXC"  "Install KeepassXC                                    " OFF \
+  "KEEPASSXC"  "Install KeepassXC (snap)                             " OFF \
   "STEAM"      "Install Steam                                        " OFF \
-  "LUTRIS"     "Install Lutris (for Steam, Epic, EA, Ubisoft, GOG)   " OFF \
-  "GPT4ALL"    "Install gpt4all                                      " OFF \
-  "PINOKIO"    "Install pinokio.computer                             " OFF \
+  "LUTRIS"     "Install Lutris (deb) (Steam, Epic, EA, Ubisoft, GOG) " OFF \
+  "GPT4ALL"    "Install gpt4all (.run)                               " OFF \
+  "PINOKIO"    "Install pinokio.computer (deb)                       " OFF \
   "RMDOCS"     "Nautillus (Files) sidebar > Remove Documents         " OFF \
   "RMMUSIC"    "Nautillus (Files) sidebar > Remove Music             " OFF \
   "RMPICTURES" "Nautillus (Files) sidebar > Remove Pictures          " OFF \
