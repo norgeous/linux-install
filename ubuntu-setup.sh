@@ -34,8 +34,8 @@ CHOICES=$(\
   whiptail --title "norgeous' Ubuntu setup" --checklist \
   "Use Up / Down and Space to select.\nEnter to start.\nEsc to cancel." 21 77 12 \
   "UPGRADE"    "Update and upgrade system software                   " OFF \
-  "AUTOREMOVE" "Autoremove packages                                  " OFF \
   "UNBLOAT"    "Remove Ubuntu bloat                                  " OFF \
+  "AUTOREMOVE" "Autoremove packages                                  " OFF \
   "NOWAY"      "Disable Wayland                                      " OFF \
   "MPV"        "Install MPV                                          " OFF \
   "GIMP"       "Install GIMP (snap)                                  " OFF \
