@@ -92,11 +92,12 @@ for i in $CHOICES; do
     snap install chromium
   fi
 
-  # sudo apt install flatpak
+  # sudo apt install -y flatpak
   # flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-
   # flatpak install -y flathub net.waterfox.waterfox
 
+  # sudo apt install -y flatpak
+  # flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
   # flatpak install -y flathub net.nokyan.Resources
 
   # addons into firefox (they need to be enabled manually)
