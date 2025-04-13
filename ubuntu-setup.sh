@@ -146,6 +146,9 @@ for i in $CHOICES; do
     sudo npm i -g ntl # node task list - command line package.json menu
   fi
 
+  # pyenv pyhton version manager
+  # curl -fsSL https://pyenv.run | bash
+
   if [[ "$i" == '"VSCODE"' ]]; then
     sudo snap install code --classic
     sudo apt remove -y gnome-text-editor
