@@ -72,7 +72,7 @@ for i in $CHOICES; do
   fi
 
   if [[ "$i" == '"UNBLOAT"' ]]; then
-    sudo apt remove -y deja-dup rhythmbox cheese totem shotwell
+    sudo apt remove -y deja-dup rhythmbox cheese totem shotwell remmina 'libreoffice*'
     sudo snap remove thunderbird cups
   fi
 
@@ -118,7 +118,8 @@ for i in $CHOICES; do
 
   if [[ "$i" == '"MPV"' ]]; then
     sudo apt install -y mpv
-    echo "r playlist-shuffle" > "~/.config/mpv/input.conf"
+    echo "r playlist-shuffle" > ~/.config/mpv/input.conf
+    echo -e "volume=50\nloop-playlist=inf" > ~/.config/mpv/mpv.conf
   fi
 
   if [[ "$i" == '"GIMP"' ]]; then
@@ -159,6 +160,7 @@ for i in $CHOICES; do
     sudo apt remove -y gnome-text-editor
 
     # fixing the copy lines up/down keybindings
+    mkdir -p ~/.config/Code/User/
     cat <<'EOF' > ~/.config/Code/User/keybindings.json
 [
     { "key": "shift+alt+up",        "command": "editor.action.copyLinesUpAction",    "when": "editorTextFocus && !editorReadonly" },
