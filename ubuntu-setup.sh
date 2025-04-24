@@ -33,32 +33,34 @@ title "norgeous' Ubuntu setup"
 CHOICES=$(\
   whiptail --title "norgeous' Ubuntu setup" --checklist \
   "Use Up / Down and Space to select.\nEnter to start.\nEsc to cancel." 21 77 12 \
-  "UPGRADE"    "Update and upgrade system software                   " OFF \
-  "UNBLOAT"    "Remove Ubuntu bloat                                  " OFF \
-  "AUTOREMOVE" "Autoremove packages                                  " OFF \
-  "NOWAY"      "Disable Wayland                                      " OFF \
-  "CHROME"     "Install Chrome (deb)                                 " OFF \
-  "CHROMIUM"   "Install Chromium (snap)                              " OFF \
-  "WATERFOX"   "Install Waterfox (flatpak)                           " OFF \
-  "TOP"        "Install htop and nvtop                               " OFF \
-  "RESOURCES"  "Install Nokyan Resources (flatpak)                   " OFF \
-  "MPV"        "Install MPV                                          " OFF \
-  "GIMP"       "Install GIMP (snap)                                  " OFF \
-  "INKSCAPE"   "Install InkScape (snap)                              " OFF \
-  "BLENDER"    "Install Blender (snap)                               " OFF \
-  "NODE"       "Install tj/n                                         " OFF \
-  "VSCODE"     "Install VSCode (snap) and remove Gnome Text Editor   " OFF \
-  "GHDESKTOP"  "Install Github Desktop                               " OFF \
-  "SYNCTHING"  "Install Syncthing                                    " OFF \
-  "KEEPASSXC"  "Install KeepassXC (snap)                             " OFF \
-  "STEAM"      "Install Steam                                        " OFF \
-  "LUTRIS"     "Install Lutris (deb) (Steam, Epic, EA, Ubisoft, GOG) " OFF \
-  "GPT4ALL"    "Install gpt4all (.run)                               " OFF \
-  "PINOKIO"    "Install pinokio.computer (deb)                       " OFF \
-  "RMDOCS"     "Remove ~/Documents                                   " OFF \
-  "RMMUSIC"    "Remove ~/Music                                       " OFF \
-  "RMPICTURES" "Remove ~/Pictures                                    " OFF \
-  "RMVIDEOS"   "Remove ~/Videos                                      " OFF \
+  "UPGRADE"     "Update and upgrade system software                   " OFF \
+  "UNBLOAT"     "Remove Ubuntu bloat                                  " OFF \
+  "AUTOREMOVE"  "Autoremove packages                                  " OFF \
+  "NOWAY"       "Disable Wayland                                      " OFF \
+  "CHROME"      "Install Chrome (deb)                                 " OFF \
+  "CHROMIUM"    "Install Chromium (snap)                              " OFF \
+  "WATERFOX"    "Install Waterfox (flatpak)                           " OFF \
+  "TOP"         "Install htop and nvtop                               " OFF \
+  "RESOURCES"   "Install Nokyan Resources (flatpak)                   " OFF \
+  "MPV"         "Install MPV                                          " OFF \
+  "GIMP"        "Install GIMP (snap)                                  " OFF \
+  "INKSCAPE"    "Install InkScape (snap)                              " OFF \
+  "BLENDER"     "Install Blender (snap)                               " OFF \
+  "NODE"        "Install tj/n                                         " OFF \
+  "VSCODE"      "Install VSCode (snap) and remove Gnome Text Editor   " OFF \
+  "GHDESKTOP"   "Install Github Desktop                               " OFF \
+  "SYNCTHING"   "Install Syncthing                                    " OFF \
+  "KEEPASSXC"   "Install KeepassXC (snap)                             " OFF \
+  "STEAM"       "Install Steam                                        " OFF \
+  "LUTRIS"      "Install Lutris (deb) (Steam, Epic, EA, Ubisoft, GOG) " OFF \
+  "GPT4ALL"     "Install gpt4all (.run)                               " OFF \
+  "PINOKIO"     "Install pinokio.computer (deb)                       " OFF \
+  "RMDOCS"      "Remove ~/Documents                                   " OFF \
+  "RMMUSIC"     "Remove ~/Music                                       " OFF \
+  "RMPICTURES"  "Remove ~/Pictures                                    " OFF \
+  "RMPUBLIC"    "Remove ~/Public                                      " OFF \
+  "RMVIDEOS"    "Remove ~/Videos                                      " OFF \
+  "RMTEMPLATES" "Remove ~/Templates                                   " OFF \
 3>&1 1>&2 2>&3)
 
 for i in $CHOICES; do
@@ -243,9 +245,17 @@ EOF
     sed -i "/Pictures/d" ~/.config/gtk-3.0/bookmarks
   fi
 
+  if [[ "$i" == '"RMPUBLIC"' ]]; then
+    rmdir ~/Public
+  fi
+
   if [[ "$i" == '"RMVIDEOS"' ]]; then
     rmdir ~/Videos
     sed -i "/Videos/d" ~/.config/gtk-3.0/bookmarks
+  fi
+
+  if [[ "$i" == '"RMTEMPLATES"' ]]; then
+    rmdir ~/Templates
   fi
 
   echo
