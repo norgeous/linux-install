@@ -1,6 +1,6 @@
 # ubuntu-setup
 
-Installs applications and customisations to linux (Ubuntu 24.04) installs
+Installs applications and customisations to linux (Ubuntu 25.04) installs
 
 ```sh
 sudo apt install -y git

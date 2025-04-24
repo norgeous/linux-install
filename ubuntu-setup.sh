@@ -55,11 +55,11 @@ CHOICES=$(\
   "LUTRIS"     "Install Lutris (deb) (Steam, Epic, EA, Ubisoft, GOG) " OFF \
   "GPT4ALL"    "Install gpt4all (.run)                               " OFF \
   "PINOKIO"    "Install pinokio.computer (deb)                       " OFF \
+  "RMDOCS"     "Remove ~/Documents                                   " OFF \
+  "RMMUSIC"    "Remove ~/Music                                       " OFF \
+  "RMPICTURES" "Remove ~/Pictures                                    " OFF \
+  "RMVIDEOS"   "Remove ~/Videos                                      " OFF \
 3>&1 1>&2 2>&3)
-  # "RMDOCS"     "Nautillus (Files) sidebar > Remove Documents         " OFF \
-  # "RMMUSIC"    "Nautillus (Files) sidebar > Remove Music             " OFF \
-  # "RMPICTURES" "Nautillus (Files) sidebar > Remove Pictures          " OFF \
-  # "RMVIDEOS"   "Nautillus (Files) sidebar > Remove Videos            " OFF \
 
 for i in $CHOICES; do
   log "Working on $i..."
@@ -228,25 +228,25 @@ EOF
     cp /usr/share/icons/hicolor/0x0/apps/pinokio.png ~/.local/share/icons/hicolor/256x256/apps/pinokio.png
   fi
 
-  # if [[ "$i" == '"RMDOCS"' ]]; then
-  #   commentOut "XDG_DOCUMENTS_DIR=" "$HOME/.config/user-dirs.dirs"
-  #   sudo commentOut "DOCUMENTS=" "/etc/xdg/user-dirs.defaults" # must be edited for changes to persist after reboot
-  # fi
+  if [[ "$i" == '"RMDOCS"' ]]; then
+    rmdir ~/Documents
+    sed -i "/Documents/d" ~/.config/gtk-3.0/bookmarks
+  fi
 
-  # if [[ "$i" == '"RMMUSIC"' ]]; then
-  #   commentOut "XDG_MUSIC_DIR=" "$HOME/.config/user-dirs.dirs"
-  #   sudo commentOut "MUSIC=" "/etc/xdg/user-dirs.defaults" # must be edited for changes to persist after reboot
-  # fi
+  if [[ "$i" == '"RMMUSIC"' ]]; then
+    rmdir ~/Music
+    sed -i "/Music/d" ~/.config/gtk-3.0/bookmarks
+  fi
 
-  # if [[ "$i" == '"RMPICTURES"' ]]; then
-  #   commentOut "XDG_PICTURES_DIR=" "$HOME/.config/user-dirs.dirs"
-  #   sudo commentOut "PICTURES=" "/etc/xdg/user-dirs.defaults" # must be edited for changes to persist after reboot
-  # fi
+  if [[ "$i" == '"RMPICTURES"' ]]; then
+    rmdir ~/Pictures
+    sed -i "/Pictures/d" ~/.config/gtk-3.0/bookmarks
+  fi
 
-  # if [[ "$i" == '"RMVIDEOS"' ]]; then
-  #   commentOut "XDG_VIDEOS_DIR=" "$HOME/.config/user-dirs.dirs"
-  #   sudo commentOut "VIDEOS=" "/etc/xdg/user-dirs.defaults" # must be edited for changes to persist after reboot
-  # fi
+  if [[ "$i" == '"RMVIDEOS"' ]]; then
+    rmdir ~/Videos
+    sed -i "/Videos/d" ~/.config/gtk-3.0/bookmarks
+  fi
 
   echo
 
