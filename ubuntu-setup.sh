@@ -55,11 +55,11 @@ CHOICES=$(\
   "LUTRIS"     "Install Lutris (deb) (Steam, Epic, EA, Ubisoft, GOG) " OFF \
   "GPT4ALL"    "Install gpt4all (.run)                               " OFF \
   "PINOKIO"    "Install pinokio.computer (deb)                       " OFF \
+3>&1 1>&2 2>&3)
   # "RMDOCS"     "Nautillus (Files) sidebar > Remove Documents         " OFF \
   # "RMMUSIC"    "Nautillus (Files) sidebar > Remove Music             " OFF \
   # "RMPICTURES" "Nautillus (Files) sidebar > Remove Pictures          " OFF \
   # "RMVIDEOS"   "Nautillus (Files) sidebar > Remove Videos            " OFF \
-3>&1 1>&2 2>&3)
 
 for i in $CHOICES; do
   log "Working on $i..."
