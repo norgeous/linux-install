@@ -51,6 +51,7 @@ CHOICES=$(\
   "LUTRIS"      "Install Lutris (deb) (Steam, Epic, EA, Ubisoft, GOG) " OFF \
   "GPT4ALL"     "Install gpt4all (.run)                               " OFF \
   "PINOKIO"     "Install pinokio.computer (deb)                       " OFF \
+  "DOCKBOTTOM"  "Move dock to bottom edge of screen                   " OFF \
   "RMDOCS"      "Remove ~/Documents                                   " OFF \
   "RMMUSIC"     "Remove ~/Music                                       " OFF \
   "RMPICTURES"  "Remove ~/Pictures                                    " OFF \
@@ -224,6 +225,10 @@ EOF
     
     # fix the .desktop link file icon, as it seems to be broken
     cp /usr/share/icons/hicolor/0x0/apps/pinokio.png ~/.local/share/icons/hicolor/256x256/apps/pinokio.png
+  fi
+
+  if [[ "$i" == '"DOCKBOTTOM"' ]]; then
+    gsettings set org.gnome.shell.extensions.dash-to-dock dock-position BOTTOM
   fi
 
   if [[ "$i" == '"RMDOCS"' ]]; then
