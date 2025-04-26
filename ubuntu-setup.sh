@@ -36,6 +36,8 @@ CHOICES=$(\
   "CHROME"      "Install Chrome (deb)                                 " OFF \
   "CHROMIUM"    "Install Chromium (snap)                              " OFF \
   "WATERFOX"    "Install Waterfox (flatpak)                           " OFF \
+  "UBLOCK"      "Install uBlock Origin (firefox addon)                " OFF \
+  "SPONSBLOCK"  "Install SponsorBlock (firefox addon)                 " OFF \
   "TOP"         "Install htop and nvtop                               " OFF \
   "RESOURCES"   "Install Nokyan Resources (flatpak)                   " OFF \
   "MPV"         "Install MPV                                          " OFF \
@@ -51,13 +53,13 @@ CHOICES=$(\
   "LUTRIS"      "Install Lutris (deb) (Steam, Epic, EA, Ubisoft, GOG) " OFF \
   "GPT4ALL"     "Install gpt4all (.run)                               " OFF \
   "PINOKIO"     "Install pinokio.computer (deb)                       " OFF \
-  "DOCKBOTTOM"  "Move dock to bottom edge of screen                   " OFF \
+  "DOCKBOTTOM"  "Move dock to bottom edge and set 32px icons          " OFF \
   "RMDOCS"      "Remove ~/Documents                                   " OFF \
   "RMMUSIC"     "Remove ~/Music                                       " OFF \
   "RMPICTURES"  "Remove ~/Pictures                                    " OFF \
   "RMPUBLIC"    "Remove ~/Public                                      " OFF \
-  "RMVIDEOS"    "Remove ~/Videos                                      " OFF \
   "RMTEMPLATES" "Remove ~/Templates                                   " OFF \
+  "RMVIDEOS"    "Remove ~/Videos                                      " OFF \
 3>&1 1>&2 2>&3)
 
 for i in $CHOICES; do
@@ -100,10 +102,15 @@ for i in $CHOICES; do
     flatpak install -y flathub net.waterfox.waterfox
   fi
 
-  # addons into firefox (they need to be enabled manually)
-  # firefox_default_profile=$(echo ~/snap/firefox/common/.mozilla/firefox/*.default/extensions)
-  # wget https://addons.mozilla.org/firefox/downloads/file/4458450/ublock_origin-latest.xpi -O $firefox_default_profile/uBlock0@raymondhill.net.xpi
-  # wget https://addons.mozilla.org/firefox/downloads/file/4465727/sponsorblock-latest.xpi -O $firefox_default_profile/sponsorBlocker@ajay.app.xpi
+  if [[ "$i" == '"UBLOCK"' ]]; then
+    firefox_default_profile=$(echo ~/snap/firefox/common/.mozilla/firefox/*.default/extensions)
+    wget https://addons.mozilla.org/firefox/downloads/file/4458450/ublock_origin-latest.xpi -O $firefox_default_profile/uBlock0@raymondhill.net.xpi
+  fi
+
+  if [[ "$i" == '"SPONSBLOCK"' ]]; then
+    firefox_default_profile=$(echo ~/snap/firefox/common/.mozilla/firefox/*.default/extensions)
+    wget https://addons.mozilla.org/firefox/downloads/file/4465727/sponsorblock-latest.xpi -O $firefox_default_profile/sponsorBlocker@ajay.app.xpi
+  fi
 
   if [[ "$i" == '"TOP"' ]]; then
     sudo apt install -y htop nvtop
@@ -147,7 +154,7 @@ for i in $CHOICES; do
     sudo npm i -g ntl # node task list - command line package.json menu
   fi
 
-  # pyenv pyhton version manager
+  # pyenv python version manager
   # curl -fsSL https://pyenv.run | bash
   # echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
   # echo '[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
@@ -229,6 +236,7 @@ EOF
 
   if [[ "$i" == '"DOCKBOTTOM"' ]]; then
     gsettings set org.gnome.shell.extensions.dash-to-dock dock-position BOTTOM
+    gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size 32
   fi
 
   if [[ "$i" == '"RMDOCS"' ]]; then
@@ -250,13 +258,13 @@ EOF
     rmdir ~/Public
   fi
 
+  if [[ "$i" == '"RMTEMPLATES"' ]]; then
+    rmdir ~/Templates
+  fi
+
   if [[ "$i" == '"RMVIDEOS"' ]]; then
     rmdir ~/Videos
     sed -i "/Videos/d" ~/.config/gtk-3.0/bookmarks
-  fi
-
-  if [[ "$i" == '"RMTEMPLATES"' ]]; then
-    rmdir ~/Templates
   fi
 
   echo
