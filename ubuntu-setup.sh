@@ -66,10 +66,10 @@ for i in $CHOICES; do
   log "Working on $i..."
 
   if [[ "$i" == '"UPGRADE"' ]]; then
-    sudo apt update
-    sudo apt upgrade -y
-    sudo snap refresh
-    command -v flatpak && flatpak update -y
+    update="sudo apt update && sudo apt upgrade -y; sudo snap refresh; command -v flatpak && flatpak update -y"
+    eval $update
+    update_alias="alias update=\"$update\""
+    grep -Fxq "$update_alias" ~/.bashrc || echo $update_alias >> ~/.bashrc
   fi
 
   if [[ "$i" == '"UNBLOAT"' ]]; then
