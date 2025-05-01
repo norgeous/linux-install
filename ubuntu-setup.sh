@@ -32,6 +32,7 @@ CHOICES=$(\
   "UPGRADE"     "Update and upgrade system software                   " OFF \
   "UNBLOAT"     "Remove Ubuntu bloat                                  " OFF \
   "AUTOREMOVE"  "Autoremove packages                                  " OFF \
+  "FIXINSTALL"  "Fix broken install                                   " OFF \
   "NOWAY"       "Disable Wayland                                      " OFF \
   "CHROME"      "Install Chrome (deb)                                 " OFF \
   "CHROMIUM"    "Install Chromium (snap)                              " OFF \
@@ -79,6 +80,10 @@ for i in $CHOICES; do
 
   if [[ "$i" == '"AUTOREMOVE"' ]]; then
     sudo apt autoremove -y
+  fi
+
+  if [[ "$i" == '"FIXINSTALL"' ]]; then
+    sudo apt --fix-broken -y install
   fi
 
   if [[ "$i" == '"NOWAY"' ]]; then
