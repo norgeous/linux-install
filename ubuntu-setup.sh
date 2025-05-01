@@ -29,8 +29,8 @@ title "norgeous' Ubuntu setup"
 CHOICES=$(\
   whiptail --title "norgeous' Ubuntu setup" --checklist \
   "Use Up / Down and Space to select.\nEnter to start.\nEsc to cancel." 21 77 12 \
-  "UPGRADE"     "Update and upgrade system software                   " OFF \
   "UNBLOAT"     "Remove Ubuntu bloat                                  " OFF \
+  "UPGRADE"     "Update and upgrade system software                   " OFF \
   "AUTOREMOVE"  "Autoremove packages                                  " OFF \
   "FIXINSTALL"  "Fix broken install                                   " OFF \
   "NOWAY"       "Disable Wayland                                      " OFF \
@@ -66,16 +66,16 @@ CHOICES=$(\
 for i in $CHOICES; do
   log "Working on $i..."
 
+  if [[ "$i" == '"UNBLOAT"' ]]; then
+    sudo apt remove -y deja-dup rhythmbox cheese totem shotwell remmina 'libreoffice*'
+    sudo snap remove thunderbird cups
+  fi
+
   if [[ "$i" == '"UPGRADE"' ]]; then
     update="sudo apt update && sudo apt upgrade -y; sudo snap refresh; command -v flatpak && flatpak update -y"
     eval $update
     update_alias="alias update=\"$update\""
     grep -Fxq "$update_alias" ~/.bashrc || echo $update_alias >> ~/.bashrc
-  fi
-
-  if [[ "$i" == '"UNBLOAT"' ]]; then
-    sudo apt remove -y deja-dup rhythmbox cheese totem shotwell remmina 'libreoffice*'
-    sudo snap remove thunderbird cups
   fi
 
   if [[ "$i" == '"AUTOREMOVE"' ]]; then
