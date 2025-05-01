@@ -76,6 +76,7 @@ for i in $CHOICES; do
     eval $update
     update_alias="alias update=\"$update\""
     grep -Fxq "$update_alias" ~/.bashrc || echo $update_alias >> ~/.bashrc
+    source ~/.bashrc
   fi
 
   if [[ "$i" == '"AUTOREMOVE"' ]]; then
