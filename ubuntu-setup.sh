@@ -54,7 +54,6 @@ CHOICES=$(\
   "LUTRIS"      "Install Lutris (deb) (Steam, Epic, EA, Ubisoft, GOG) " OFF \
   "GPT4ALL"     "Install gpt4all (.run)                               " OFF \
   "PINOKIO"     "Install pinokio.computer (deb)                       " OFF \
-  "DARKMODE"    "Activate dark mode                                   " OFF \
   "DOCKBOTTOM"  "Move dock to bottom edge and set 32px icons          " OFF \
   "RMDOCS"      "Remove ~/Documents                                   " OFF \
   "RMMUSIC"     "Remove ~/Music                                       " OFF \
@@ -239,10 +238,6 @@ EOF
     
     # fix the .desktop link file icon, as it seems to be broken
     cp /usr/share/icons/hicolor/0x0/apps/pinokio.png ~/.local/share/icons/hicolor/256x256/apps/pinokio.png
-  fi
-
-  if [[ "$i" == '"DARKMODE"' ]]; then
-    gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
   fi
 
   if [[ "$i" == '"DOCKBOTTOM"' ]]; then
