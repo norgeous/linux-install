@@ -237,7 +237,7 @@ EOF
     rm /tmp/pinokio.deb
     
     # fix the .desktop link file icon, as it seems to be broken
-    cp /usr/share/icons/hicolor/0x0/apps/pinokio.png /usr/share/icons/hicolor/256x256/apps/pinokio.png
+    sudo cp /usr/share/icons/hicolor/0x0/apps/pinokio.png /usr/share/icons/hicolor/256x256/apps/pinokio.png
   fi
 
   if [[ "$i" == '"DOCKBOTTOM"' ]]; then
