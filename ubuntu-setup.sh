@@ -132,7 +132,7 @@ for i in $CHOICES; do
     sudo apt install -y mpv
     mkdir -p ~/.config/mpv/
     echo "r playlist-shuffle" > ~/.config/mpv/input.conf
-    echo -e "volume=50\nloop-playlist=inf\nautofit=100%" > ~/.config/mpv/mpv.conf
+    echo -e "volume=50\nloop-playlist=inf" > ~/.config/mpv/mpv.conf
   fi
 
   if [[ "$i" == '"GIMP"' ]]; then
