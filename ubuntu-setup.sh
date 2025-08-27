@@ -131,7 +131,7 @@ for i in $CHOICES; do
   if [[ "$i" == '"MPV"' ]]; then
     sudo apt install -y mpv
     mkdir -p ~/.config/mpv/
-    echo "r playlist-shuffle" > ~/.config/mpv/input.conf
+    echo "r playlist-shuffle\nup add volume 1\ndown add volume -1" > ~/.config/mpv/input.conf
     echo -e "volume=50\nloop-playlist=inf" > ~/.config/mpv/mpv.conf
   fi
 
