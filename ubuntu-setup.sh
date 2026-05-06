@@ -65,6 +65,7 @@ CHOICES=$(\
   "FASTBLINK"     "Faster system cursor blink rate                      " OFF \
   "HIDEHOME"      "Hide Home directory on the desktop wallpaper         " OFF \
   "BLUETOOTHOFF"  "Disable bluetooth on startup                         " OFF \
+  "MORESWAP"      "Add additional swap.img                              " OFF \
   "RMDOCS"        "Remove ~/Documents                                   " OFF \
   "RMMUSIC"       "Remove ~/Music                                       " OFF \
   "RMPICTURES"    "Remove ~/Pictures                                    " OFF \
@@ -190,16 +191,6 @@ for i in $CHOICES; do
     sudo npm i -g ntl # node task list - command line package.json menu
   fi
 
-  # pyenv python version manager
-  # curl -fsSL https://pyenv.run | bash
-  # echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
-  # echo '[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
-  # echo 'eval "$(pyenv init - bash)"' >> ~/.bashrc
-  # sudo apt update
-  # sudo apt install -y build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev curl git libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
-
-
-
   # conda installer (miniconda)
 
   if [[ "$i" == '"VSCODE"' ]]; then
@@ -240,17 +231,6 @@ EOF
     addToDock steam_steam.desktop
   fi
 
-  # if [[ "$i" == '"LUTRIS"' ]]; then
-  #   # see https://github.com/lutris/lutris/releases
-  #   latest_deb_url=$(wget -q -O - https://api.github.com/repos/lutris/lutris/releases/latest  |  jq -r '.assets[] | select(.name | contains ("deb")) | .browser_download_url')
-  #   echo $latest_deb_url
-  #   wget $latest_deb_url -O /tmp/lutris.deb
-  #   chmod +x /tmp/lutris.deb
-  #   sudo dpkg -i /tmp/lutris.deb
-  #   rm /tmp/lutris.deb
-  #   sudo apt --fix-broken -y install
-  # fi
-
   if [[ "$i" == '"LUTRIS"' ]]; then
     sudo apt install -y flatpak
     flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
@@ -258,16 +238,6 @@ EOF
     addToDock net.lutris.Lutris.desktop
   fi
 
-  # if [[ "$i" == '"GPT4ALL"' ]]; then
-  #   # see https://gpt4all.io/
-  #   wget https://gpt4all.io/installers/gpt4all-installer-linux.run -O /tmp/gpt4all-installer-linux.run
-  #   chmod +x /tmp/gpt4all-installer-linux.run
-  #   /tmp/gpt4all-installer-linux.run
-  #   rm /tmp/gpt4all-installer-linux.run
-  #   mv ~/Desktop/GPT4All.desktop ~/.local/share/applications/GPT4All.desktop
-  #   chmod +x ~/.local/share/applications/GPT4All.desktop
-  #   addToDock GPT4All.desktop
-  # fi
   if [[ "$i" == '"GPT4ALL"' ]]; then
     sudo apt install -y flatpak
     flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
@@ -335,7 +305,26 @@ EOF
     sudo sed -i "s/#AutoEnable=true/AutoEnable=false/" /etc/bluetooth/main.conf
   fi
 
-  # swapfile manager
+  if [[ "$i" == '"MORESWAP"' ]]; then
+    GB=$(whiptail --title "norgeous' Ubuntu setup" --inputbox "Size of new swap.img in GB" 8 39 3>&1 1>&2 2>&3)
+    if [[ ! "$GB" =~ ^[0-9]+$ ]]; then
+      echo "error: Not a number $GB"
+    else
+      IMG="/swap$GB.img"
+      if [[ -f "$IMG" ]]; then
+        echo "error: $IMG already exists"
+      else
+        echo "Creating: $IMG"
+        sudo fallocate -l "$GB"G $IMG
+        sudo chmod 600 $IMG
+        sudo mkswap $IMG
+        sudo swapon $IMG
+        FSTABINSERT="$IMG none swap sw 0 0"
+        grep -Fxq "$FSTABINSERT" /etc/fstab || echo $FSTABINSERT >> /etc/fstab
+      fi
+    fi
+  fi
+
   # /tmp as tmpfs manager
 
   if [[ "$i" == '"RMDOCS"' ]]; then
